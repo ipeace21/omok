@@ -1,0 +1,688 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>오목 게임 Ver.0.5</title>
+
+    <style>
+
+      table {
+        margin: 0px;
+        padding: 0px;
+        border-collapse: collapse;
+        border-spacing: 0px;
+        border-style: none;
+      }
+      td {
+        line-height: 0;
+        align: right;
+        border-spacing: 0px;
+        border-style: none;
+        padding: 0px;
+      }
+      img {
+        display: block;
+      }
+
+    </style>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="omokcheck.js"></script>
+
+    <script>
+      var omokj = new Array(400);
+      var omokdol;
+      var omokxywhere;
+      var dol_total_howmany;
+      var dol_continue;
+      var dol_next_bwhere;
+      var dol_white_continue;
+      var dol_white_continue4;
+      var dol_black_continue4;
+      var winner="";
+      var dol33;
+
+
+      function gamestart() {
+        var i, j, k;
+
+        for (i=0;i<=400;i++){
+            omokj[i] = 0;
+        }
+        omokdol = 1;
+        dol_total_howmany = 0;
+        dol_continue = 0;
+        dol_white_continue = 1;
+      }
+
+      function gameoverw() {
+        alert("Game Over : The winner is Black!");
+        var element = document.getElementById("testresult");
+		      element.value = "[새 게임 시작] 버튼을 클릭하세요.";
+		      element.style.color = "red";
+		      element.style.fontWeight = "bold";
+          $("img").off("click");
+      }
+
+      function gameoverb() {
+        alert("Game Over : The winner is White!");
+        var element = document.getElementById("testresult");
+          element.value = "[새 게임 시작] 버튼을 클릭하세요.";
+          element.style.color = "red";
+          element.style.fontWeight = "bold";
+          $("img").off("click");
+      }
+
+      gamestart();
+
+
+    // jquery 프로그램 부분
+
+      $(document).ready(function(){
+
+        $("img").on("click", function(){
+          var omokjxy = $(this).attr("id");
+          var omokjxyval = omokjxy.split('_');
+          var omokjx = Number(omokjxyval[1].substring(1));
+          var omokjy = Number(omokjxyval[2].substring(1));
+          omokjxywhere = (omokjx-1)*19 + omokjy;
+          var putstone;
+          var blackx, blacky, blackxy, blackxyid;
+          var omokjxywhereb;
+          var jbRandom;
+          var blackcheck;
+
+          check_33();
+
+          if (omokj[omokjxywhere] == 0 && omokdol == 1 && dol33 != 100) {
+              putstone = "omok02d.jpg";
+              omokdol = -1;
+              dol_continue = 1;
+              omokj[omokjxywhere] = 1;
+              $(this).attr("src", putstone);
+              dol_total_howmany++;
+              document.getElementById("whiteresult").value = "#" + omokjxy+"("+omokjxywhere+")";
+              wincheckw();
+              if (winner != "") {
+                setTimeout(function() {
+                  gameoverw();
+                }, 500);
+              }
+
+
+              // black 돌 놓을 위치 찾기
+
+              check_3();
+              check_4();
+              attackcheck4();
+
+              if (dol_black_continue4 == 4) {
+                omokjxywhereb = dol_next_bwhere;
+              }
+              else if (dol_white_continue4 == 4 ) {
+                omokjxywhereb = dol_next_bwhere;
+              }
+              else if (dol_white_continue == 3 ) {
+                omokjxywhereb = dol_next_bwhere;
+              }
+              else {
+                blackcheck = 0;
+                for(var kk=0; kk<8; kk++){
+                  jbRandom = Math.floor(Math.random() * 8);
+                  if(jbRandom == 0 && omokjxywhere > 19 && omokj[omokjxywhere-19] == 0)
+                    {omokjxywhereb = omokjxywhere-19; blackcheck++; break;}
+                  if(jbRandom == 1 && omokjxywhere > 19 && omokjxywhere%19 > 0 && omokj[omokjxywhere-18] == 0)
+                    {omokjxywhereb = omokjxywhere-18; blackcheck++; break;}
+                  if(jbRandom == 2 && omokjxywhere%19 > 0 && omokj[omokjxywhere+1] == 0)
+                    {omokjxywhereb = omokjxywhere+1; blackcheck++; break;}
+                  if(jbRandom == 3 && omokjxywhere < 343 && omokjxywhere%19 > 0 && omokj[omokjxywhere+20] == 0)
+                    {omokjxywhereb = omokjxywhere+20; blackcheck++; break;}
+                  if(jbRandom == 4 && omokjxywhere < 343 && omokj[omokjxywhere+19] == 0)
+                    {omokjxywhereb = omokjxywhere+19; blackcheck++; break;}
+                  if(jbRandom == 5 && omokjxywhere < 343 && omokjxywhere%19 > 1 && omokj[omokjxywhere+18] == 0)
+                    {omokjxywhereb = omokjxywhere+18; blackcheck++; break;}
+                  if(jbRandom == 6 && omokjxywhere%19 > 1 && omokj[omokjxywhere-1] == 0)
+                    {omokjxywhereb = omokjxywhere-1; blackcheck++; break;}
+                  if(jbRandom == 7 && omokjxywhere > 19 && omokjxywhere%19 > 1 && omokj[omokjxywhere-20] == 0)
+                    {omokjxywhereb = omokjxywhere-20; blackcheck++; break;}
+                }
+
+                if(blackcheck == 0){
+                  for(var kk=0; kk<16; kk++){
+                    jbRandom = Math.floor(Math.random() * 16);
+                    if(jbRandom == 0 && omokjxywhere > 38 && omokj[omokjxywhere-38] == 0)
+                      {omokjxywhereb = omokjxywhere-38; blackcheck++; break;}
+                    if(jbRandom == 1 && omokjxywhere > 38 && omokjxywhere%19 > 0 && omokjxywhere%19 < 19 && omokj[omokjxywhere-37] == 0)
+                      {omokjxywhereb = omokjxywhere-37; blackcheck++; break;}
+                    if(jbRandom == 2 && omokjxywhere > 38 && omokjxywhere%19 > 0 && omokjxywhere%19 < 18 && omokj[omokjxywhere-36] == 0)
+                      {omokjxywhereb = omokjxywhere-36; blackcheck++; break;}
+                    if(jbRandom == 3 && omokjxywhere > 19 && omokjxywhere%19 > 0 && omokjxywhere%19 < 18 && omokj[omokjxywhere-17] == 0)
+                      {omokjxywhereb = omokjxywhere-17; blackcheck++; break;}
+                    if(jbRandom == 4 && omokjxywhere%19 > 0 && omokjxywhere%19 < 18 && omokj[omokjxywhere+2] == 0)
+                      {omokjxywhereb = omokjxywhere+2; blackcheck++; break;}
+                    if(jbRandom == 5 && omokjxywhere < 343 && omokjxywhere%19 > 0 && omokjxywhere%19 < 18 && omokj[omokjxywhere+21] == 0)
+                      {omokjxywhereb = omokjxywhere+21; blackcheck++; break;}
+                    if(jbRandom == 6 && omokjxywhere < 325 && omokjxywhere%19 > 0 && omokjxywhere%19 < 18 && omokj[omokjxywhere+40] == 0)
+                      {omokjxywhereb = omokjxywhere+40; blackcheck++; break;}
+                    if(jbRandom == 7 && omokjxywhere < 325 && omokjxywhere%19 > 0 && omokjxywhere%19 < 19 && omokj[omokjxywhere+39] == 0)
+                      {omokjxywhereb = omokjxywhere+39; blackcheck++; break;}
+                    if(jbRandom == 8 && omokjxywhere < 325 && omokj[omokjxywhere+38] == 0)
+                      {omokjxywhereb = omokjxywhere+38; blackcheck++; break;}
+                    if(jbRandom == 9 && omokjxywhere < 325 && omokjxywhere%19 > 1 && omokj[omokjxywhere+37] == 0)
+                      {omokjxywhereb = omokjxywhere+37; blackcheck++; break;}
+                    if(jbRandom == 10 && omokjxywhere < 325 && omokjxywhere%19 > 2 && omokj[omokjxywhere+36] == 0)
+                      {omokjxywhereb = omokjxywhere+36; blackcheck++; break;}
+                    if(jbRandom == 11 && omokjxywhere < 343 && omokjxywhere%19 > 2 && omokj[omokjxywhere+17] == 0)
+                      {omokjxywhereb = omokjxywhere+17; blackcheck++; break;}
+                    if(jbRandom == 12 && omokjxywhere%19 > 2 && omokj[omokjxywhere-2] == 0)
+                      {omokjxywhereb = omokjxywhere-2; blackcheck++; break;}
+                    if(jbRandom == 13 && omokjxywhere > 19 && omokjxywhere%19 > 2 && omokj[omokjxywhere-21] == 0)
+                      {omokjxywhereb = omokjxywhere-21; blackcheck++; break;}
+                    if(jbRandom == 14 && omokjxywhere > 38 && omokjxywhere%19 > 2 && omokj[omokjxywhere-40] == 0)
+                      {omokjxywhereb = omokjxywhere-40; blackcheck++; break;}
+                    if(jbRandom == 15 && omokjxywhere > 38 && omokjxywhere%19 > 1 && omokj[omokjxywhere-39] == 0)
+                      {omokjxywhereb = omokjxywhere-39; blackcheck++; break;}
+                   }
+                }
+
+                if(blackcheck == 0){
+                  while(true){
+                    jbRandom = Math.floor(Math.random() * 342);
+                    if(omokj[jbRandom] == 0)
+                      {omokjxywhereb = jbRandom; blackcheck++; break;}
+                  }
+                }
+
+              }
+
+            // Black 돌 놓기
+
+              if(omokjxywhereb%19 == 0){
+                blackx = String(parseInt(omokjxywhereb / 19));
+                blacky = String(19);
+              } else {
+                blackx = String(parseInt(omokjxywhereb / 19) + 1);
+                blacky = String(omokjxywhereb % 19);
+              }
+              blackxy = "#img_x" + blackx + "_y" + blacky;
+              document.getElementById("blackresult").value = blackxy+"("+omokjxywhereb+")";
+
+              putstone = "omok03d.jpg";
+              omokdol = 1;
+              dol_continue = -1;
+              omokj[omokjxywhereb] = -1;
+              $(blackxy).attr("src", putstone);
+              dol_total_howmany++;
+
+              omokjxywhere = omokjxywhereb;
+              wincheckb();
+              if (winner != "") {
+                setTimeout(function() {
+                  gameoverb();
+                }, 500);
+              }
+
+          }
+
+
+        });
+
+      });
+
+    </script>
+
+    <style>
+      #omok_main {
+        display: grid;
+        grid-template-columns: 760px 1fr;
+      }
+
+    </style>
+
+  </head>
+
+
+
+  <body>
+
+  <div id="omok_main">
+
+  <div id="omok1">
+    <br>
+    <table>
+      <tr>
+        <td><img id="img_x1_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x1_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x2_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x2_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x3_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x3_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x4_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x4_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x5_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x5_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x6_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x6_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x7_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x7_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x8_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x8_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x9_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x9_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x10_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x10_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x11_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x11_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x12_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x12_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x13_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x13_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x14_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x14_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x15_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x15_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x16_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x16_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x17_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x17_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x18_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x18_y19" src="omok01.jpg"/></td>
+      </tr>
+      <tr>
+        <td><img id="img_x19_y1" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y2" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y3" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y4" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y5" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y6" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y7" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y8" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y9" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y10" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y11" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y12" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y13" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y14" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y15" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y16" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y17" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y18" src="omok01.jpg"/></td>
+        <td><img id="img_x19_y19" src="omok01.jpg"/></td>
+      </tr>
+
+
+    </table>
+
+  </div>
+
+  <div id="omok2">
+      <h1>오목 게임 Ver.0.5</h1>
+      <button id="btn_gamestart" style="font-size:18px; margin-right:180px;" onClick="window.location.reload()">   새 게임 시작   </button>
+      <span style = "font-size:20px;"><a href="https://ipeace21.github.io/numberchoice/index.html">Go to Home</a></span><br><br>
+      <input type="text" id="testresult" value="오목판의 교차점 부분을 클릭하면, 검은색 바둑돌이 놓아집니다." style="width:400px; height:25px; color:blue;"/><br><br>
+      You(Black) <input type="text" id="checkresult" value="" style="width:300px; height:25px;"/><br><br>
+      Black <input type="text" id="whiteresult" value="" style="width:125px; height:25px;"/>
+      <span>......</span>
+      White <input type="text" id="blackresult" value="" style="width:125px; height:25px;"/><br><br>
+      <div style="width:400px; background-color:#ccffcc; padding-top:1px; padding-bottom:1px; padding-left:10px; padding-right:10px;">
+      <p>이 오목 게임은 인공지능(AI)의 초보 입문 단계를 맛보기 위해 JavaScript를 이용해서 제작하였습니다.
+         기본적으로 인공지능(AI)은 적절한 알고리즘으로 판단과 선택의 과정을 거쳐 데이터를 처리하는 것이라고 할 수 있습니다.
+         판단과 선택에는 기준이 필요한데, '무엇을 기준으로 할 것이냐?' 하는 것은 매우 중요한 요소가 됩니다.
+         여기에는 세상에 대한 이해를 바탕으로 하는 다양한 요소들이 작용하게 됩니다.
+         그러므로 인공지능(AI)은 물질적인 측면만으로 다룰 수 없는 분야입니다.</p>
+      <p>이 오목 게임의 버전(Ver)을 0.5로 표시한 것은 아직 매우 초보 단계에 불과하다는 것을 의미합니다.
+         특히 알고리즘이 매우 단순하게 되어 있어서, 오목 수준으로는 왕초보에 해당하는 프로그램입니다. 마음껏 이겨보세요!!</p>
+       </div>
+
+      <p style="font-size:20px;">읽을 거리 : <a href="computeris.html">** AI와 사람은 닮았습니다 **</a></p><br>
+      <p style = "font-size: 12px;">made by ipeace21 for Christ!</p>
+  </div>
+
+  </div>
+
+
+  </body>
+
+</html>
