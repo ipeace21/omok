@@ -54,6 +54,7 @@
       var dol_black_continue4b;
       var winner="";
       var dol33;
+      var gameovercheck;
 
 
       function gamestart() {
@@ -66,6 +67,7 @@
         dol_total_howmany = 0;
         dol_continue = 0;
         dol_white_continue = 1;
+        gameovercheck = 0;
       }
 
       function gameoverw() {
@@ -117,11 +119,14 @@
               document.getElementById("whiteresult").value = "#" + omokjxy+"("+omokjxywhere+")";
               wincheckw();
               if (winner != "") {
+                gameovercheck = 1;
                 setTimeout(function() {
                   gameoverw();
                 }, 500);
               }
 
+
+              if (gameovercheck == 0) {
 
               // black 돌 놓을 위치 찾기
 
@@ -247,10 +252,13 @@
               omokjxywhere = omokjxywhereb;
               wincheckb();
               if (winner != "") {
+                gameovercheck = 2;
                 setTimeout(function() {
                   gameoverb();
                 }, 500);
               }
+
+            }
 
           }
 
