@@ -487,10 +487,10 @@ function check_4() {
     if (dol_continue_w == 4){
       owhere = omokjxywhere;
       if(omokj[owhere-19*oend1] == 0 ){
-        dol_next_bwhere = owhere-19*oend1;
+        dol_next_bwhere_w4 = owhere-19*oend1;
       }
       if(omokj[owhere+19*oend2] == 0){
-        dol_next_bwhere = owhere+19*oend2;
+        dol_next_bwhere_w4 = owhere+19*oend2;
       }
       dol_white_continue4 = 4;
     }
@@ -526,10 +526,10 @@ function check_4() {
   if (dol_continue_w == 4){
     owhere = omokjxywhere;
     if(omokj[owhere-oend1] == 0 ){
-      dol_next_bwhere = owhere-oend1;
+      dol_next_bwhere_w4 = owhere-oend1;
     }
     if(omokj[owhere+oend2] == 0){
-      dol_next_bwhere = owhere+oend2;
+      dol_next_bwhere_w4 = owhere+oend2;
     }
     dol_white_continue4 = 4;
   }
@@ -569,10 +569,10 @@ function check_4() {
     if (dol_continue_w == 4){
       owhere = omokjxywhere;
       if(omokj[owhere-oend1] == 0 ){
-        dol_next_bwhere = owhere-oend1;
+        dol_next_bwhere_w4 = owhere-oend1;
       }
       if(omokj[owhere+oend2] == 0){
-        dol_next_bwhere = owhere+oend2;
+        dol_next_bwhere_w4 = owhere+oend2;
       }
       dol_white_continue4 = 4;
     }
@@ -612,10 +612,10 @@ function check_4() {
       if (dol_continue_w == 4){
         owhere = omokjxywhere;
         if(omokj[owhere-oend1] == 0 ){
-          dol_next_bwhere = owhere-oend1;
+          dol_next_bwhere_w4 = owhere-oend1;
         }
         if(omokj[owhere+oend2] == 0){
-          dol_next_bwhere = owhere+oend2;
+          dol_next_bwhere_w4 = owhere+oend2;
         }
         dol_white_continue4 = 4;
       }
@@ -667,7 +667,7 @@ function check_3() {
     if (dol_continue_w == 3){
       owhere = omokjxywhere;
       if(omokj[owhere-19*oend1] == 0 && omokj[owhere+19*oend2] == 0){
-        dol_next_bwhere = owhere-19*oend1;
+        dol_next_bwhere_w3 = owhere-19*oend1;
         dol_white_continue = 3;
       }
     }
@@ -702,7 +702,7 @@ function check_3() {
       if (dol_continue_w == 3){
         owhere = omokjxywhere;
         if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
-          dol_next_bwhere = owhere-oend1;
+          dol_next_bwhere_w3 = owhere-oend1;
           dol_white_continue = 3;
         }
       }
@@ -742,7 +742,7 @@ function check_3() {
         if (dol_continue_w == 3){
           owhere = omokjxywhere;
           if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
-            dol_next_bwhere = owhere-oend1;
+            dol_next_bwhere_w3 = owhere-oend1;
             dol_white_continue = 3;
           }
         }
@@ -782,7 +782,7 @@ function check_3() {
           if (dol_continue_w == 3){
             owhere = omokjxywhere;
             if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
-              dol_next_bwhere = owhere-oend1;
+              dol_next_bwhere_w3 = owhere-oend1;
               dol_white_continue = 3;
             }
           }
@@ -801,7 +801,6 @@ function attackcheck4() {
     var owherex;
     var owherey;
     var oend1, oend2;
-    dol_continue_btext = "UD";
     var blackwhere;
 
 
@@ -837,12 +836,12 @@ function attackcheck4() {
         if (dol_continue_b == 4){
           owhere = blackwhere;
           if(omokj[owhere-19*oend1] == 0 ){
-            dol_next_bwhere = owhere-19*oend1;
+            dol_next_bwhere_b4 = owhere-19*oend1;
             dol_black_continue4 = 4;
             break;
           }
           if(omokj[owhere+19*oend2] == 0){
-            dol_next_bwhere = owhere+19*oend2;
+            dol_next_bwhere_b4 = owhere+19*oend2;
             dol_black_continue4 = 4;
             break;
           }
@@ -877,12 +876,12 @@ function attackcheck4() {
           if (dol_continue_b == 4){
             owhere = blackwhere;
             if(omokj[owhere-oend1] == 0 ){
-              dol_next_bwhere = owhere-oend1;
+              dol_next_bwhere_b4 = owhere-oend1;
               dol_black_continue4 = 4;
               break;
             }
             if(omokj[owhere+oend2] == 0){
-              dol_next_bwhere = owhere+oend2;
+              dol_next_bwhere_b4 = owhere+oend2;
               dol_black_continue4 = 4;
               break;
             }
@@ -891,6 +890,7 @@ function attackcheck4() {
 
           // Check_4 _ 좌상대각선
             dol_continue_b = 1;
+            dol_black_continue4 = 1;
             owherex = parseInt(blackwhere / 19) + 1;
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
@@ -922,12 +922,12 @@ function attackcheck4() {
             if (dol_continue_b == 4){
               owhere = blackwhere;
               if(omokj[owhere-oend1] == 0 ){
-                dol_next_bwhere = owhere-oend1;
+                dol_next_bwhere_b4 = owhere-oend1;
                 dol_black_continue4 = 4;
                 break;
               }
               if(omokj[owhere+oend2] == 0){
-                dol_next_bwhere = owhere+oend2;
+                dol_next_bwhere_b4 = owhere+oend2;
                 dol_black_continue4 = 4;
                 break;
               }
@@ -936,6 +936,7 @@ function attackcheck4() {
 
             // Check_4 _ 우상대각선
               dol_continue_b = 1;
+              dol_black_continue4 = 1;
               owherex = parseInt(blackwhere / 19) + 1;
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
@@ -967,12 +968,12 @@ function attackcheck4() {
               if (dol_continue_b == 4){
                 owhere = blackwhere;
                 if(omokj[owhere-oend1] == 0 ){
-                  dol_next_bwhere = owhere-oend1;
+                  dol_next_bwhere_b4 = owhere-oend1;
                   dol_black_continue4 = 4;
                   break;
                 }
                 if(omokj[owhere+oend2] == 0){
-                  dol_next_bwhere = owhere+oend2;
+                  dol_next_bwhere_b4 = owhere+oend2;
                   dol_black_continue4 = 4;
                   break;
                 }
@@ -983,3 +984,178 @@ function attackcheck4() {
     }
 
 } // attackcheck4() 함수 끝
+
+
+
+// attackcheck3 함수
+function attackcheck3() {
+
+    var dol_continue_b;
+    var i, j;
+    var owhere;
+    var owherex;
+    var owherey;
+    var oend1, oend2;
+    var blackwhere;
+
+
+
+    for(blackwhere=1; blackwhere <= 361; blackwhere++){
+
+      if(omokj[blackwhere] == -1 ){
+
+        // Check_3 _ 세로줄
+        dol_continue_b = 1;
+        dol_black_continue3 = 1;
+        owhere = blackwhere;
+        i = 1;
+        while(i<=5){
+          owhere = owhere - 19;
+          if( owhere > 0 && omokj[owhere] == -1 ){
+            dol_continue_b++;
+            i++;
+          } else { break; }
+        }
+        oend1 = i;
+        owhere = blackwhere;
+        j = 1;
+        while(j<=5){
+          owhere = owhere + 19;
+          if( owhere < 362 && omokj[owhere] == -1 ){
+            dol_continue_b++;
+            j++;
+          } else { break; }
+        }
+        oend2 = j;
+
+        if (dol_continue_b == 3){
+          owhere = blackwhere;
+          if(omokj[owhere-19*oend1] == 0 && omokj[owhere+19*oend2] == 0){
+            dol_next_bwhere_b3 = owhere-19*oend1;
+            dol_black_continue3 = 3;
+            break;
+          }
+        }
+
+          // Check_3 _ 가로줄
+          dol_continue_b = 1;
+          dol_black_continue3 = 1;
+          owhere = blackwhere % 19;
+          if(owhere == 0 ){ owhere = 19; }
+          i = 1;
+          while(i<=5){
+            owhere = owhere - 1;
+            if( owhere >= 1 && omokj[blackwhere-i] == -1 ){
+              dol_continue_b++;
+              i++;
+            } else { break; }
+          }
+          oend1 = i;
+          owhere = blackwhere % 19;
+          if(owhere == 0 ){ owhere = 19; }
+          j = 1;
+          while(j<=5){
+            owhere = owhere + 1;
+            if( owhere <= 19 && omokj[blackwhere+j] == -1 ){
+              dol_continue_b++;
+              j++;
+            } else { break; }
+          }
+          oend2 = j;
+
+          if (dol_continue_b == 3){
+            owhere = blackwhere;
+            if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+              dol_next_bwhere_b3 = owhere-oend1;
+              dol_black_continue3 = 3;
+              break;
+            }
+          }
+
+
+          // Check_3 _ 좌상대각선
+            dol_continue_b = 1;
+            dol_black_continue3 = 1;
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0 ){ owherey = 19; }
+            i = 1;
+            while(i<=5){
+              owherex = owherex - 1;
+              owherey = owherey - 1;
+              if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == -1 ){
+                dol_continue_b++;
+                i++;
+              } else { break; }
+            }
+            oend1 = i*20;
+
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0 ){ owherey = 19; }
+            j = 1;
+            while(j<=5){
+              owherex = owherex + 1;
+              owherey = owherey + 1;
+              if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == -1 ){
+                dol_continue_b++;
+                j++;
+              } else { break; }
+            }
+            oend2 = j*20;
+
+            if (dol_continue_b == 3){
+              owhere = blackwhere;
+              if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+                dol_next_bwhere_b3 = owhere-oend1;
+                dol_black_continue3 = 3;
+                break;
+              }
+            }
+
+
+            // Check_3 _ 우상대각선
+              dol_continue_b = 1;
+              dol_black_continue3 = 1;
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0 ){ owherey = 19; }
+              i = 1;
+              while(i<=5){
+                owherex = owherex - 1;
+                owherey = owherey + 1;
+                if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == -1 ){
+                  dol_continue_b++;
+                  i++;
+                } else { break; }
+              }
+              oend1 = i*18;
+
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0 ){ owherey = 19; }
+              j = 1;
+              while(j<=5){
+                owherex = owherex + 1;
+                owherey = owherey - 1;
+                if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == -1 ){
+                  dol_continue_b++;
+                  j++;
+                } else { break; }
+              }
+              oend2 = j*18;
+
+              if (dol_continue_b == 3){
+                owhere = blackwhere;
+                if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+                  dol_next_bwhere_b3 = owhere-oend1;
+                  dol_black_continue3 = 3;
+                  break;
+                }
+              }
+
+      }
+
+    }
+
+} // attackcheck3() 함수 끝

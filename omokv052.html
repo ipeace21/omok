@@ -38,9 +38,14 @@
       var dol_total_howmany;
       var dol_continue;
       var dol_next_bwhere;
+      var dol_next_bwhere_w4;
+      var dol_next_bwhere_w3;
+      var dol_next_bwhere_b4;
+      var dol_next_bwhere_b3;
       var dol_white_continue;
       var dol_white_continue4;
       var dol_black_continue4;
+      var dol_black_continue3;
       var winner="";
       var dol33;
 
@@ -117,15 +122,20 @@
               check_3();
               check_4();
               attackcheck4();
+              attackcheck3();
+
 
               if (dol_black_continue4 == 4) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_b4;
               }
               else if (dol_white_continue4 == 4 ) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_w4;
               }
               else if (dol_white_continue == 3 ) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_w3;
+              }
+              else if (dol_black_continue3 == 3) {
+                omokjxywhereb = dol_next_bwhere_b3;
               }
               else {
                 blackcheck = 0;
@@ -660,8 +670,8 @@
   <div id="omok2">
       <h1>오목 게임 Ver.0.5</h1>
       <button id="btn_gamestart" style="font-size:18px; margin-right:20px;" onClick="window.location.reload()">   새 게임 시작   </button>
-      <span style="color:red;">[왕초보1]</span>
-      <span><a href="omokv052.html">[왕초보2]</a></span>
+      <span><a href="omokv05.html">[왕초보1]</a></span>
+      <span style="color:red;">[왕초보2]</span>
       <span style = "font-size:20px;"><a href="https://ipeace21.github.io/numberchoice/index.html">Go to Home</a></span><br><br>
       <input type="text" id="testresult" value="오목판의 교차점 부분을 클릭하면, 검은색 바둑돌이 놓아집니다." style="width:400px; height:25px; color:blue;"/><br><br>
       You(Black) <input type="text" id="checkresult" value="" style="width:300px; height:25px;"/><br><br>
