@@ -68,9 +68,9 @@ function wincheckw() {
 
       // Win Check _ 좌상대각선
         dol_continue_w = 1;
-        owherex = omokjxywhere % 19;
-        if(owherex == 0 ){ owherex = 19; }
-        owherey = parseInt(omokjxywhere / 19) + 1;
+        owherex = parseInt(omokjxywhere / 19) + 1;
+        owherey = omokjxywhere % 19;
+        if(owherey == 0 ){ owherey = 19; }
         j = 1;
         while(j<=5){
           owherex = owherex - 1;
@@ -80,9 +80,9 @@ function wincheckw() {
             j++;
           } else { break; }
         }
-        owherex = omokjxywhere % 19;
-        if(owherex == 0 ){ owherex = 19; }
-        owherey = parseInt(omokjxywhere / 19) + 1;
+        owherex = parseInt(omokjxywhere / 19) + 1;
+        owherey = omokjxywhere % 19;
+        if(owherey == 0 ){ owherey = 19; }
         j = 1;
         while(j<=5){
           owherex = owherex + 1;
@@ -100,9 +100,9 @@ function wincheckw() {
 
         // Win Check _ 우상대각선
           dol_continue_w = 1;
-          owherex = omokjxywhere % 19;
-          if(owherex == 0 ){ owherex = 19; }
-          owherey = parseInt(omokjxywhere / 19) + 1;
+          owherex = parseInt(omokjxywhere / 19) + 1;
+          owherey = omokjxywhere % 19;
+          if(owherey == 0 ){ owherey = 19; }
           j = 1;
           while(j<=5){
             owherex = owherex - 1;
@@ -112,9 +112,9 @@ function wincheckw() {
               j++;
             } else { break; }
           }
-          owherex = omokjxywhere % 19;
-          if(owherex == 0 ){ owherex = 19; }
-          owherey = parseInt(omokjxywhere / 19) + 1;
+          owherex = parseInt(omokjxywhere / 19) + 1;
+          owherey = omokjxywhere % 19;
+          if(owherey == 0 ){ owherey = 19; }
           j = 1;
           while(j<=5){
             owherex = owherex + 1;
@@ -203,9 +203,9 @@ function wincheckb() {
 
       // Win Check _ 좌상대각선
         dol_continue_b = 1;
-        owherex = omokjxywhere % 19;
-        if(owherex == 0 ){ owherex = 19; }
-        owherey = parseInt(omokjxywhere / 19) + 1;
+        owherex = parseInt(omokjxywhere / 19) + 1;
+        owherey = omokjxywhere % 19;
+        if(owherey == 0 ){ owherey = 19; }
         j = 1;
         while(j<=5){
           owherex = owherex - 1;
@@ -215,9 +215,9 @@ function wincheckb() {
             j++;
           } else { break; }
         }
-        owherex = omokjxywhere % 19;
-        if(owherex == 0 ){ owherex = 19; }
-        owherey = parseInt(omokjxywhere / 19) + 1;
+        owherex = parseInt(omokjxywhere / 19) + 1;
+        owherey = omokjxywhere % 19;
+        if(owherey == 0 ){ owherey = 19; }
         j = 1;
         while(j<=5){
           owherex = owherex + 1;
@@ -236,9 +236,9 @@ function wincheckb() {
 
         // Win Check _ 우상대각선
           dol_continue_b = 1;
-          owherex = omokjxywhere % 19;
-          if(owherex == 0 ){ owherex = 19; }
-          owherey = parseInt(omokjxywhere / 19) + 1;
+          owherex = parseInt(omokjxywhere / 19) + 1;
+          owherey = omokjxywhere % 19;
+          if(owherey == 0 ){ owherey = 19; }
           j = 1;
           while(j<=5){
             owherex = owherex - 1;
@@ -248,9 +248,9 @@ function wincheckb() {
               j++;
             } else { break; }
           }
-          owherex = omokjxywhere % 19;
-          if(owherex == 0 ){ owherex = 19; }
-          owherey = parseInt(omokjxywhere / 19) + 1;
+          owherex = parseInt(omokjxywhere / 19) + 1;
+          owherey = omokjxywhere % 19;
+          if(owherey == 0 ){ owherey = 19; }
           j = 1;
           while(j<=5){
             owherex = owherex + 1;
