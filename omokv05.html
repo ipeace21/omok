@@ -38,9 +38,14 @@
       var dol_total_howmany;
       var dol_continue;
       var dol_next_bwhere;
+      var dol_next_bwhere_w4;
+      var dol_next_bwhere_w3;
+      var dol_next_bwhere_b4;
+      var dol_next_bwhere_b3;
       var dol_white_continue;
       var dol_white_continue4;
       var dol_black_continue4;
+      var dol_black_continue3;
       var winner="";
       var dol33;
 
@@ -118,14 +123,15 @@
               check_4();
               attackcheck4();
 
+
               if (dol_black_continue4 == 4) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_b4;
               }
               else if (dol_white_continue4 == 4 ) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_w4;
               }
               else if (dol_white_continue == 3 ) {
-                omokjxywhereb = dol_next_bwhere;
+                omokjxywhereb = dol_next_bwhere_w3;
               }
               else {
                 blackcheck = 0;
