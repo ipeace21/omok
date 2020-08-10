@@ -1,6 +1,6 @@
-// omokcheck.js 파일 Ver.0.53 (2020.08.06.)
+// omokcheck.js 파일 Ver.0.54 (2020.08.10.)
 
-// wincheckw 함수
+// wincheckw 함수 - 검정색 바둑돌이 5개 놓였는지 확인
 function wincheckw() {
   var dol_continue_w;
   var dol_continue_wtext;
@@ -134,7 +134,7 @@ function wincheckw() {
 
 
 
-// wincheckb 함수
+// wincheckb 함수 - 흰색 바둑돌이 5개 놓였는지 확인
 function wincheckb() {
   var dol_continue_b;
   var dol_continue_btext;
@@ -272,7 +272,7 @@ function wincheckb() {
 
 
 
-// 3*3 체크 함수
+// 3*3 체크 함수 - 검정색 바둑돌을 놓으면 3*3이 되는지 확인
 function check_33() {
   var dol_continue_w;
   var i, j;
@@ -446,7 +446,7 @@ function check_33() {
 
 
 
-// check_4 함수
+// check_4 함수 - 흰돌 [*]oooo[ ]
 function check_4() {
   var dol_continue_w;
   var dol_continue_wtext;
@@ -482,8 +482,6 @@ function check_4() {
     }
     oend2 = j;
 
-    dol_continue_wtext = "세로 : " + dol_continue_w;
-    document.getElementById("checkresult").value = dol_continue_wtext;
     if (dol_continue_w == 4){
       owhere = omokjxywhere;
       if(omokj[owhere-19*oend1] == 0 ){
@@ -521,8 +519,6 @@ function check_4() {
   }
   oend2 = j;
 
-  dol_continue_wtext = dol_continue_wtext + ", 가로 : " + dol_continue_w;
-  document.getElementById("checkresult").value = dol_continue_wtext;
   if (dol_continue_w == 4){
     owhere = omokjxywhere;
     if(omokj[owhere-oend1] == 0 ){
@@ -564,8 +560,6 @@ function check_4() {
     }
     oend2 = j*20;
 
-    dol_continue_wtext = dol_continue_wtext + ", 대각선A : " + dol_continue_w;
-    document.getElementById("checkresult").value = dol_continue_wtext;
     if (dol_continue_w == 4){
       owhere = omokjxywhere;
       if(omokj[owhere-oend1] == 0 ){
@@ -607,8 +601,6 @@ function check_4() {
       }
       oend2 = j*18;
 
-      dol_continue_wtext = dol_continue_wtext + ", 대각선B : " + dol_continue_w;
-      document.getElementById("checkresult").value = dol_continue_wtext;
       if (dol_continue_w == 4){
         owhere = omokjxywhere;
         if(omokj[owhere-oend1] == 0 ){
@@ -626,7 +618,7 @@ function check_4() {
 
 
 
-// check_3 함수
+// check_3 함수 - 흰돌 ( )ooo( )
 function check_3() {
   var dol_continue_w;
   var dol_continue_wtext;
@@ -662,8 +654,6 @@ function check_3() {
     }
     oend2 = j;
 
-    dol_continue_wtext = "세로 : " + dol_continue_w;
-    document.getElementById("checkresult").value = dol_continue_wtext;
     if (dol_continue_w == 3){
       owhere = omokjxywhere;
       if(omokj[owhere-19*oend1] == 0 && omokj[owhere+19*oend2] == 0){
@@ -697,8 +687,6 @@ function check_3() {
       }
       oend2 = j;
 
-      dol_continue_wtext = dol_continue_wtext + ", 가로 : " + dol_continue_w;
-      document.getElementById("checkresult").value = dol_continue_wtext;
       if (dol_continue_w == 3){
         owhere = omokjxywhere;
         if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
@@ -737,8 +725,6 @@ function check_3() {
         }
         oend2 = j*20;
 
-        dol_continue_wtext = dol_continue_wtext + ", 대각선A : " + dol_continue_w;
-        document.getElementById("checkresult").value = dol_continue_wtext;
         if (dol_continue_w == 3){
           owhere = omokjxywhere;
           if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
@@ -777,8 +763,6 @@ function check_3() {
           }
           oend2 = j*18;
 
-          dol_continue_wtext = dol_continue_wtext + ", 대각선B : " + dol_continue_w;
-          document.getElementById("checkresult").value = dol_continue_wtext;
           if (dol_continue_w == 3){
             owhere = omokjxywhere;
             if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
@@ -792,7 +776,7 @@ function check_3() {
 
 
 
-// attackcheck4 함수
+// attackcheck4 함수 - 검은돌 [o]****[ ]
 function attackcheck4() {
 
     var dol_continue_b;
@@ -987,7 +971,7 @@ function attackcheck4() {
 
 
 
-// attackcheck3 함수
+// attackcheck3 함수 - 검은돌 ( )***( )
 function attackcheck3() {
 
     var dol_continue_b;
@@ -1162,7 +1146,7 @@ function attackcheck3() {
 
 
 
-// attackcheck4b 함수
+// attackcheck4b 함수 - 검은돌 *[ ]***
 function attackcheck4b() {
 
     var dol_continue_b;
@@ -1183,7 +1167,7 @@ function attackcheck4b() {
         dol_black_continue4b = 1;
         owhere = blackwhere;
         i = 1;
-        while(i<=3){
+        while(i<=4){
           owhere = owhere - 19;
           if( owhere > 0 && omokj[owhere] == -1 ){
             dol_continue_b++;
@@ -1192,7 +1176,7 @@ function attackcheck4b() {
         }
         owhere = blackwhere;
         j = 1;
-        while(j<=3){
+        while(j<=4){
           owhere = owhere + 19;
           if( owhere < 362 && omokj[owhere] == -1 ){
             dol_continue_b++;
@@ -1213,7 +1197,7 @@ function attackcheck4b() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           i = 1;
-          while(i<=3){
+          while(i<=4){
             owhere = owhere - 1;
             if( owhere >= 1 && omokj[blackwhere-i] == -1 ){
               dol_continue_b++;
@@ -1223,7 +1207,7 @@ function attackcheck4b() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           j = 1;
-          while(j<=3){
+          while(j<=4){
             owhere = owhere + 1;
             if( owhere <= 19 && omokj[blackwhere+j] == -1 ){
               dol_continue_b++;
@@ -1245,7 +1229,7 @@ function attackcheck4b() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             i = 1;
-            while(i<=3){
+            while(i<=4){
               owherex = owherex - 1;
               owherey = owherey - 1;
               if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == -1 ){
@@ -1258,7 +1242,7 @@ function attackcheck4b() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             j = 1;
-            while(j<=3){
+            while(j<=4){
               owherex = owherex + 1;
               owherey = owherey + 1;
               if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == -1 ){
@@ -1281,7 +1265,7 @@ function attackcheck4b() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               i = 1;
-              while(i<=3){
+              while(i<=4){
                 owherex = owherex - 1;
                 owherey = owherey + 1;
                 if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == -1 ){
@@ -1294,7 +1278,7 @@ function attackcheck4b() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               j = 1;
-              while(j<=3){
+              while(j<=4){
                 owherex = owherex + 1;
                 owherey = owherey - 1;
                 if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == -1 ){
@@ -1316,7 +1300,7 @@ function attackcheck4b() {
 } // attackcheck4b() 함수 끝
 
 
-// whitecheck4w 함수
+// whitecheck4w 함수 - 흰돌 o( )ooo
 function whitecheck4w() {
 
     var dol_continue_b;
@@ -1336,7 +1320,7 @@ function whitecheck4w() {
         dol_wihte_continue4w = 1;
         owhere = blackwhere;
         i = 1;
-        while(i<=3){
+        while(i<=4){
           owhere = owhere - 19;
           if( owhere > 0 && omokj[owhere] == 1 ){
             dol_continue_b++;
@@ -1345,7 +1329,7 @@ function whitecheck4w() {
         }
         owhere = blackwhere;
         j = 1;
-        while(j<=3){
+        while(j<=4){
           owhere = owhere + 19;
           if( owhere < 362 && omokj[owhere] == 1 ){
             dol_continue_b++;
@@ -1366,7 +1350,7 @@ function whitecheck4w() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           i = 1;
-          while(i<=3){
+          while(i<=4){
             owhere = owhere - 1;
             if( owhere >= 1 && omokj[blackwhere-i] == 1 ){
               dol_continue_b++;
@@ -1376,7 +1360,7 @@ function whitecheck4w() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           j = 1;
-          while(j<=3){
+          while(j<=4){
             owhere = owhere + 1;
             if( owhere <= 19 && omokj[blackwhere+j] == 1 ){
               dol_continue_b++;
@@ -1398,7 +1382,7 @@ function whitecheck4w() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             i = 1;
-            while(i<=3){
+            while(i<=4){
               owherex = owherex - 1;
               owherey = owherey - 1;
               if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == 1 ){
@@ -1411,7 +1395,7 @@ function whitecheck4w() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             j = 1;
-            while(j<=3){
+            while(j<=4){
               owherex = owherex + 1;
               owherey = owherey + 1;
               if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == 1 ){
@@ -1434,7 +1418,7 @@ function whitecheck4w() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               i = 1;
-              while(i<=3){
+              while(i<=4){
                 owherex = owherex - 1;
                 owherey = owherey + 1;
                 if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == 1 ){
@@ -1447,7 +1431,7 @@ function whitecheck4w() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               j = 1;
-              while(j<=3){
+              while(j<=4){
                 owherex = owherex + 1;
                 owherey = owherey - 1;
                 if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == 1 ){
@@ -1471,7 +1455,7 @@ function whitecheck4w() {
 
 
 
-// blackcheck3b 함수
+// blackcheck3b 함수 - 검은돌 *( )**
 function blackcheck3b() {
 
     var dol_continue_b;
@@ -1493,9 +1477,9 @@ function blackcheck3b() {
         dol_black_continue3b = 1;
         owhere = blackwhere;
         i = 1;
-        while(i<=2){
+        while(i<=3){
           owhere = owhere - 19;
-          if( owhere > 0 && omokj[owhere] == 1 ){
+          if( owhere > 0 && omokj[owhere] == -1 ){
             dol_continue_b++;
             i++;
           } else { break; }
@@ -1503,9 +1487,9 @@ function blackcheck3b() {
         oend1 = i;
         owhere = blackwhere;
         j = 1;
-        while(j<=2){
+        while(j<=3){
           owhere = owhere + 19;
-          if( owhere < 362 && omokj[owhere] == 1 ){
+          if( owhere < 362 && omokj[owhere] == -1 ){
             dol_continue_b++;
             j++;
           } else { break; }
@@ -1527,9 +1511,9 @@ function blackcheck3b() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           i = 1;
-          while(i<=2){
+          while(i<=3){
             owhere = owhere - 1;
-            if( owhere >= 1 && omokj[blackwhere-i] == 1 ){
+            if( owhere >= 1 && omokj[blackwhere-i] == -1 ){
               dol_continue_b++;
               i++;
             } else { break; }
@@ -1538,9 +1522,9 @@ function blackcheck3b() {
           owhere = blackwhere % 19;
           if(owhere == 0 ){ owhere = 19; }
           j = 1;
-          while(j<=2){
+          while(j<=3){
             owhere = owhere + 1;
-            if( owhere <= 19 && omokj[blackwhere+j] == 1 ){
+            if( owhere <= 19 && omokj[blackwhere+j] == -1 ){
               dol_continue_b++;
               j++;
             } else { break; }
@@ -1564,10 +1548,10 @@ function blackcheck3b() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             i = 1;
-            while(i<=2){
+            while(i<=3){
               owherex = owherex - 1;
               owherey = owherey - 1;
-              if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == 1 ){
+              if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == -1 ){
                 dol_continue_b++;
                 i++;
               } else { break; }
@@ -1578,10 +1562,10 @@ function blackcheck3b() {
             owherey = blackwhere % 19;
             if(owherey == 0 ){ owherey = 19; }
             j = 1;
-            while(j<=2){
+            while(j<=3){
               owherex = owherex + 1;
               owherey = owherey + 1;
-              if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == 1 ){
+              if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == -1 ){
                 dol_continue_b++;
                 j++;
               } else { break; }
@@ -1605,10 +1589,10 @@ function blackcheck3b() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               i = 1;
-              while(i<=2){
+              while(i<=3){
                 owherex = owherex - 1;
                 owherey = owherey + 1;
-                if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == 1 ){
+                if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == -1 ){
                   dol_continue_b++;
                   i++;
                 } else { break; }
@@ -1619,10 +1603,10 @@ function blackcheck3b() {
               owherey = blackwhere % 19;
               if(owherey == 0 ){ owherey = 19; }
               j = 1;
-              while(j<=2){
+              while(j<=3){
                 owherex = owherex + 1;
                 owherey = owherey - 1;
-                if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == 1 ){
+                if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == -1 ){
                   dol_continue_b++;
                   j++;
                 } else { break; }
@@ -1643,3 +1627,178 @@ function blackcheck3b() {
     }
 
 } // blackcheck3b 함수 끝
+
+
+
+// whitecheck3w 함수 - 흰돌 o( )oo
+function whitecheck3w() {
+
+    var dol_continue_b;
+    var i, j;
+    var owhere;
+    var owherex;
+    var owherey;
+    var oend1, oend2;
+    var blackwhere;
+
+
+
+    for(blackwhere=1; blackwhere <= 361; blackwhere++){
+
+      if(omokj[blackwhere] == 0 ){
+
+        // Check_3b _ 세로줄
+        dol_continue_b = 0;
+        dol_white_continue3w = 1;
+        owhere = blackwhere;
+        i = 1;
+        while(i<=3){
+          owhere = owhere - 19;
+          if( owhere > 0 && omokj[owhere] == 1 ){
+            dol_continue_b++;
+            i++;
+          } else { break; }
+        }
+        oend1 = i;
+        owhere = blackwhere;
+        j = 1;
+        while(j<=3){
+          owhere = owhere + 19;
+          if( owhere < 362 && omokj[owhere] == 1 ){
+            dol_continue_b++;
+            j++;
+          } else { break; }
+        }
+        oend2 = j;
+
+        if (dol_continue_b == 3){
+          owhere = blackwhere;
+          if(omokj[owhere-19*oend1] == 0 && omokj[owhere+19*oend2] == 0){
+            dol_next_bwhere_w3w = blackwhere;
+            dol_white_continue3w = 3;
+            break;
+          }
+        }
+
+          // Check_3b _ 가로줄
+          dol_continue_b = 0;
+          dol_white_continue3w = 1;
+          owhere = blackwhere % 19;
+          if(owhere == 0 ){ owhere = 19; }
+          i = 1;
+          while(i<=3){
+            owhere = owhere - 1;
+            if( owhere >= 1 && omokj[blackwhere-i] == 1 ){
+              dol_continue_b++;
+              i++;
+            } else { break; }
+          }
+          oend1 = i;
+          owhere = blackwhere % 19;
+          if(owhere == 0 ){ owhere = 19; }
+          j = 1;
+          while(j<=3){
+            owhere = owhere + 1;
+            if( owhere <= 19 && omokj[blackwhere+j] == 1 ){
+              dol_continue_b++;
+              j++;
+            } else { break; }
+          }
+          oend2 = j;
+
+          if (dol_continue_b == 3){
+            owhere = blackwhere;
+            if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+              dol_next_bwhere_w3w = blackwhere;
+              dol_white_continue3w = 3;
+              break;
+            }
+          }
+
+
+          // Check_3b _ 좌상대각선
+            dol_continue_b = 0;
+            dol_white_continue3w = 1;
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0 ){ owherey = 19; }
+            i = 1;
+            while(i<=3){
+              owherex = owherex - 1;
+              owherey = owherey - 1;
+              if( owherex >= 1 && owherey >= 1 && omokj[blackwhere-(20*i)] == 1 ){
+                dol_continue_b++;
+                i++;
+              } else { break; }
+            }
+            oend1 = i*20;
+
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0 ){ owherey = 19; }
+            j = 1;
+            while(j<=3){
+              owherex = owherex + 1;
+              owherey = owherey + 1;
+              if( owherex <= 19 && owherey <=19 && omokj[blackwhere+(20*j)] == 1 ){
+                dol_continue_b++;
+                j++;
+              } else { break; }
+            }
+            oend2 = j*20;
+
+            if (dol_continue_b == 3){
+              owhere = blackwhere;
+              if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+                dol_next_bwhere_w3w = blackwhere;
+                dol_white_continue3w = 3;
+                break;
+              }
+            }
+
+
+            // Check_3b _ 우상대각선
+              dol_continue_b = 0;
+              dol_white_continue3w = 1;
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0 ){ owherey = 19; }
+              i = 1;
+              while(i<=3){
+                owherex = owherex - 1;
+                owherey = owherey + 1;
+                if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == 1 ){
+                  dol_continue_b++;
+                  i++;
+                } else { break; }
+              }
+              oend1 = i*18;
+
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0 ){ owherey = 19; }
+              j = 1;
+              while(j<=3){
+                owherex = owherex + 1;
+                owherey = owherey - 1;
+                if( owherex <= 19 && owherey >=1 && omokj[blackwhere+(18*j)] == 1 ){
+                  dol_continue_b++;
+                  j++;
+                } else { break; }
+              }
+              oend2 = j*18;
+
+              if (dol_continue_b == 3){
+                owhere = blackwhere;
+                if(omokj[owhere-oend1] == 0 && omokj[owhere+oend2] == 0){
+                  dol_next_bwhere_w3w = blackwhere;
+                  dol_white_continue3w = 3;
+                  break;
+                }
+              }
+
+      }
+
+    }
+
+} // whitecheck3w 함수 끝

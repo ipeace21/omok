@@ -4,7 +4,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>오목 게임 Ver.0.52</title>
+    <title>오목 게임 Ver.0.54</title>
 
     <style>
 
@@ -39,15 +39,24 @@
       var dol_continue;
       var dol_next_bwhere;
       var dol_next_bwhere_w4;
+      var dol_next_bwhere_w4w;
       var dol_next_bwhere_w3;
+      var dol_next_bwhere_w3w;
       var dol_next_bwhere_b4;
       var dol_next_bwhere_b3;
+      var dol_next_bwhere_b3b;
+      var dol_next_bwhere_b4b;
       var dol_white_continue;
+      var dol_white_continue3w;
       var dol_white_continue4;
+      var dol_white_continue4w;
       var dol_black_continue4;
       var dol_black_continue3;
+      var dol_black_continue3b;
+      var dol_black_continue4b;
       var winner="";
       var dol33;
+      var gameovercheck;
 
 
       function gamestart() {
@@ -60,6 +69,7 @@
         dol_total_howmany = 0;
         dol_continue = 0;
         dol_white_continue = 1;
+        gameovercheck = 0;
       }
 
       function gameoverw() {
@@ -111,32 +121,52 @@
               document.getElementById("whiteresult").value = "#" + omokjxy;
               wincheckw();
               if (winner != "") {
+                gameovercheck = 1;
                 setTimeout(function() {
                   gameoverw();
                 }, 500);
               }
 
 
+              if (gameovercheck == 0) {
+
               // black 돌 놓을 위치 찾기
 
-              check_3();
-              check_4();
-              attackcheck4();
-              attackcheck3();
+              whitecheck3w();  //8
+              check_3();       //7
+              blackcheck3b();  //6
+              attackcheck3();  //5
+              whitecheck4w();  //4
+              check_4();       //3
+              attackcheck4b(); //2
+              attackcheck4();  //1
+
 
 
               if (dol_black_continue4 == 4) {
                 omokjxywhereb = dol_next_bwhere_b4;
-              }
+              } //검 4
+              else if (dol_black_continue4b == 4) {
+                omokjxywhereb = dol_next_bwhere_b4b;
+              } // 검 4b
               else if (dol_white_continue4 == 4 ) {
                 omokjxywhereb = dol_next_bwhere_w4;
-              }
-              else if (dol_white_continue == 3 ) {
-                omokjxywhereb = dol_next_bwhere_w3;
-              }
+              } // 흰 4
+              else if (dol_white_continue4w == 4) {
+                omokjxywhereb = dol_next_bwhere_w4w;
+              } // 흰 4b
               else if (dol_black_continue3 == 3) {
                 omokjxywhereb = dol_next_bwhere_b3;
-              }
+              } // 검 3
+              else if( dol_black_continue3b == 3) {
+                omokjxywhereb = dol_next_bwhere_b3b;
+              } // 검 3b
+              else if (dol_white_continue == 3 ) {
+                omokjxywhereb = dol_next_bwhere_w3;
+              } // 흰 3
+              else if( dol_white_continue3w == 3) {
+                omokjxywhereb = dol_next_bwhere_w3w;
+              } // 흰 3b
               else {
                 blackcheck = 0;
                 for(var kk=0; kk<8; kk++){
@@ -229,10 +259,13 @@
               omokjxywhere = omokjxywhereb;
               wincheckb();
               if (winner != "") {
+                gameovercheck = 2;
                 setTimeout(function() {
                   gameoverb();
                 }, 500);
               }
+
+            }
 
           }
 
@@ -661,11 +694,11 @@
 
   <div id="explain"; style="float:left;">
   <div>
-      <h1>오목 게임 Ver.0.52</h1>
+      <h1>오목 게임 Ver.0.54</h1>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv05.html">[왕초보1]</a></span>
-      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[왕초보2]</b></span>
+      <span style="font-size:18px; margin-right:8px;"><a href="omokv052.html">[왕초보2]</a></span>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv053.html">[왕초보3]</a></span><br>
-      <span style="font-size:18px; margin-right:8px;"><a href="omokv054.html">[초보1]</a></span>
+      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[초보1]</b></span>
       <span style="font-size:20px;"><a href="https://ipeace21.github.io/numberchoice/index.html">Go to Home</a></span><br><br>
       <button id="btn_gamestart" style="font-size:18px; margin-right:20px;" onClick="window.location.reload()">   새 게임 시작   </button><br>
       <input type="text" id="testresult" value="오목판의 교차점 부분을 클릭하세요." style="width:270px; height:25px; color:blue;"/><br>
