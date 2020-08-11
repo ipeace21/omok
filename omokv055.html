@@ -47,8 +47,10 @@
       var dol_next_bwhere_b3b;
       var dol_next_bwhere_b4b;
       var dol_next_bwhere_w2;
+      var dol_next_bwhere_w2w;
       var dol_next_bwhere_b2;
       var dol_white_continue2;
+      var dol_white_continue2w;
       var dol_white_continue;
       var dol_white_continue3w;
       var dol_white_continue4;
@@ -136,7 +138,8 @@
 
               // black 돌 놓을 위치 찾기
 
-              check_2();       //10
+              check_2();       //11
+              make3white2w();  //10
               make3white();    //9
               whitecheck3w();  //8
               check_3();       //7
@@ -151,32 +154,35 @@
 
               if (dol_black_continue4 == 4) {
                 omokjxywhereb = dol_next_bwhere_b4;
-              } //검 4
+              } // 흰 4
               else if (dol_black_continue4b == 4) {
                 omokjxywhereb = dol_next_bwhere_b4b;
-              } // 검 4b
+              } // 흰 4b
               else if (dol_white_continue4 == 4 ) {
                 omokjxywhereb = dol_next_bwhere_w4;
-              } // 흰 4
+              } // 검 4
               else if (dol_white_continue4w == 4) {
                 omokjxywhereb = dol_next_bwhere_w4w;
-              } // 흰 4b
+              } // 검 4b
               else if (dol_black_continue3 == 3) {
                 omokjxywhereb = dol_next_bwhere_b3;
-              } // 검 3
-              else if( dol_black_continue3b == 3) {
+              } // 흰 3
+              else if(dol_black_continue3b == 3) {
                 omokjxywhereb = dol_next_bwhere_b3b;
-              } // 검 3b
+              } // 흰 3b
               else if (dol_white_continue == 3 ) {
                 omokjxywhereb = dol_next_bwhere_w3;
-              } // 흰 3
-              else if( dol_white_continue3w == 3) {
+              } // 검 3
+              else if(dol_white_continue3w == 3) {
                 omokjxywhereb = dol_next_bwhere_w3w;
-              } // 흰 3b
-              else if( dol_white_continue2 == 2) {
+              } // 검 3b
+              else if(dol_white_continue2 == 2) {
                 omokjxywhereb = dol_next_bwhere_w2;
-              } // 검 2
-              else if( dol_black_continue2 == 2) {
+              } // 흰 2
+              else if(dol_white_continue2w == 2) {
+                omokjxywhereb = dol_next_bwhere_w2w;
+              } // 흰 2w
+              else if(dol_black_continue2 == 2) {
                 omokjxywhereb = dol_next_bwhere_b2;
               } // 검 2
               else {
