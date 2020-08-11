@@ -1,4 +1,7 @@
-// omokcheck.js 파일 Ver.0.54 (2020.08.10.)
+// omokcheck.js 파일 Ver.0.55 (2020.08.11.)
+
+// 빈 자리 : 0,  검은 돌 : 1,  흰 돌 : -1
+
 
 // wincheckw 함수 - 검정색 바둑돌이 5개 놓였는지 확인
 function wincheckw() {
@@ -1802,3 +1805,205 @@ function whitecheck3w() {
     }
 
 } // whitecheck3w 함수 끝
+
+
+
+// make3white() 함수 - 흰돌 ( )( )**( )
+function make3white() {
+
+    var dol_continue_b;
+    var owhere;
+    var owherex;
+    var owherey;
+    var blackwhere;
+
+
+
+    for(blackwhere=1; blackwhere <= 361; blackwhere++){
+
+      if(omokj[blackwhere] == -1 ){
+
+        dol_white_continue2 = 1;
+
+        // make3white _ 세로줄
+        owhere = blackwhere;
+        if(owhere-38 >=1 && owhere+38 <= 361
+            && omokj[blackwhere-19] == 0 && omokj[blackwhere-38] == 0
+            && omokj[blackwhere+19] == -1 && omokj[blackwhere+38] == 0){
+            dol_next_bwhere_w2 = blackwhere-19;
+            dol_white_continue2 = 2;
+            break;
+          }
+          if(owhere-38 >= 1 && owhere+38 <= 361
+              && omokj[blackwhere-19] == -1 && omokj[blackwhere-38] == 0
+              && omokj[blackwhere+19] == 0 && omokj[blackwhere+38] == 0){
+              dol_next_bwhere_w2 = blackwhere+19;
+              dol_white_continue2 = 2;
+              break;
+          }
+
+          // make3white _ 가로줄
+          owhere = blackwhere % 19;
+          if(owhere == 0){ owhere = 19; }
+          if(owhere-2 >= 1 && owhere+2 <= 19
+              && omokj[blackwhere-1] == 0 && omokj[blackwhere-2] == 0
+              && omokj[blackwhere+1] == -1 && omokj[blackwhere+2] == 0){
+              dol_next_bwhere_w2 = blackwhere-1;
+              dol_white_continue2 = 2;
+              break;
+            }
+            if(owhere-2 >= 1 && owhere+2 <= 19
+                && omokj[blackwhere-1] == -1 && omokj[blackwhere-2] == 0
+                && omokj[blackwhere+1] == 0 && omokj[blackwhere+2] == 0){
+                dol_next_bwhere_w2 = blackwhere+1;
+                dol_white_continue2 = 2;
+                break;
+              }
+
+
+            // make3white _ 좌상대각선
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0){ owherey = 19; }
+            if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                && omokj[blackwhere-20] == 0 && omokj[blackwhere-40] == 0
+                && omokj[blackwhere+20] == -1 && omokj[blackwhere+40] == 0){
+                dol_next_bwhere_w2 = blackwhere-20;
+                dol_white_continue2 = 2;
+                break;
+              }
+              if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                  && omokj[blackwhere-20] == -1 && omokj[blackwhere-40] == 0
+                  && omokj[blackwhere+20] == 0 && omokj[blackwhere+40] == 0){
+                  dol_next_bwhere_w2 = blackwhere+20;
+                  dol_white_continue2 = 2;
+                  break;
+              }
+
+
+              // make3white _ 우상대각선
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0){ owherey = 19; }
+              if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                  && omokj[blackwhere-18] == 0 && omokj[blackwhere-36] == 0
+                  && omokj[blackwhere+18] == -1 && omokj[blackwhere+36] == 0){
+                  dol_next_bwhere_w2 = blackwhere-18;
+                  dol_white_continue2 = 2;
+                  break;
+                }
+                if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                    && omokj[blackwhere-18] == -1 && omokj[blackwhere-36] == 0
+                    && omokj[blackwhere+18] == 0 && omokj[blackwhere+36] == 0){
+                    dol_next_bwhere_w2 = blackwhere+18;
+                    dol_white_continue2 = 2;
+                    break;
+                }
+
+
+      }
+
+    }
+
+} // make3white 함수 끝
+
+
+
+// check_2() 함수 - 흰돌 ( )( )**( )
+function check_2() {
+
+    var dol_continue_b;
+    var owhere;
+    var owherex;
+    var owherey;
+    var blackwhere;
+
+
+
+    for(blackwhere=1; blackwhere <= 361; blackwhere++){
+
+      if(omokj[blackwhere] == 1 ){
+
+        dol_black_continue2 = 1;
+
+        // check_2 _ 세로줄
+        owhere = blackwhere;
+        if(owhere-38 >=1 && owhere+38 <= 361
+            && omokj[blackwhere-19] == 0 && omokj[blackwhere-38] == 0
+            && omokj[blackwhere+19] == 1 && omokj[blackwhere+38] == 0){
+            dol_next_bwhere_b2 = blackwhere-19;
+            dol_black_continue2 = 2;
+            break;
+          }
+          if(owhere-38 >= 1 && owhere+38 <= 361
+              && omokj[blackwhere-19] == 1 && omokj[blackwhere-38] == 0
+              && omokj[blackwhere+19] == 0 && omokj[blackwhere+38] == 0){
+              dol_next_bwhere_b2 = blackwhere+19;
+              dol_black_continue2 = 2;
+              break;
+          }
+
+          // check_2 _ 가로줄
+          owhere = blackwhere % 19;
+          if(owhere == 0){ owhere = 19; }
+          if(owhere-2 >= 1 && owhere+2 <= 19
+              && omokj[blackwhere-1] == 0 && omokj[blackwhere-2] == 0
+              && omokj[blackwhere+1] == 1 && omokj[blackwhere+2] == 0){
+              dol_next_bwhere_b2 = blackwhere-1;
+              dol_black_continue2 = 2;
+              break;
+            }
+            if(owhere-2 >= 1 && owhere+2 <= 19
+                && omokj[blackwhere-1] == 1 && omokj[blackwhere-2] == 0
+                && omokj[blackwhere+1] == 0 && omokj[blackwhere+2] == 0){
+                dol_next_bwhere_b2 = blackwhere+1;
+                dol_black_continue2 = 2;
+                break;
+              }
+
+
+            // check_2 _ 좌상대각선
+            owherex = parseInt(blackwhere / 19) + 1;
+            owherey = blackwhere % 19;
+            if(owherey == 0){ owherey = 19; }
+            if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                && omokj[blackwhere-20] == 0 && omokj[blackwhere-40] == 0
+                && omokj[blackwhere+20] == 1 && omokj[blackwhere+40] == 0){
+                dol_next_bwhere_b2 = blackwhere-20;
+                dol_black_continue2 = 2;
+                break;
+              }
+              if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                  && omokj[blackwhere-20] == 1 && omokj[blackwhere-40] == 0
+                  && omokj[blackwhere+20] == 0 && omokj[blackwhere+40] == 0){
+                  dol_next_bwhere_b2 = blackwhere+20;
+                  dol_black_continue2 = 2;
+                  break;
+              }
+
+
+              // check_2 _ 우상대각선
+              owherex = parseInt(blackwhere / 19) + 1;
+              owherey = blackwhere % 19;
+              if(owherey == 0){ owherey = 19; }
+              if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                  && omokj[blackwhere-18] == 0 && omokj[blackwhere-36] == 0
+                  && omokj[blackwhere+18] == 1 && omokj[blackwhere+36] == 0){
+                  dol_next_bwhere_b2 = blackwhere-18;
+                  dol_black_continue2 = 2;
+                  break;
+                }
+                if(owherex-2 >= 1 && owherex+2 <= 19 && owherey-2 >= 1 && owherey+2 <=19
+                    && omokj[blackwhere-18] == 1 && omokj[blackwhere-36] == 0
+                    && omokj[blackwhere+18] == 0 && omokj[blackwhere+36] == 0){
+                    dol_next_bwhere_b2 = blackwhere+18;
+                    dol_black_continue2 = 2;
+                    break;
+                }
+
+
+      }
+
+    }
+
+} // check_2 함수 끝

@@ -4,7 +4,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>오목 게임 Ver.0.54</title>
+    <title>오목 게임 Ver.0.55</title>
 
     <style>
 
@@ -46,11 +46,15 @@
       var dol_next_bwhere_b3;
       var dol_next_bwhere_b3b;
       var dol_next_bwhere_b4b;
+      var dol_next_bwhere_w2;
+      var dol_next_bwhere_b2;
+      var dol_white_continue2;
       var dol_white_continue;
       var dol_white_continue3w;
       var dol_white_continue4;
       var dol_white_continue4w;
       var dol_black_continue4;
+      var dol_black_continue2;
       var dol_black_continue3;
       var dol_black_continue3b;
       var dol_black_continue4b;
@@ -132,6 +136,8 @@
 
               // black 돌 놓을 위치 찾기
 
+              check_2();       //10
+              make3white();    //9
               whitecheck3w();  //8
               check_3();       //7
               blackcheck3b();  //6
@@ -167,6 +173,12 @@
               else if( dol_white_continue3w == 3) {
                 omokjxywhereb = dol_next_bwhere_w3w;
               } // 흰 3b
+              else if( dol_white_continue2 == 2) {
+                omokjxywhereb = dol_next_bwhere_w2;
+              } // 검 2
+              else if( dol_black_continue2 == 2) {
+                omokjxywhereb = dol_next_bwhere_b2;
+              } // 검 2
               else {
                 blackcheck = 0;
                 for(var kk=0; kk<8; kk++){
@@ -694,12 +706,12 @@
 
   <div id="explain"; style="float:left;">
   <div>
-      <h1>오목 게임 Ver.0.54</h1>
+      <h1>오목 게임 Ver.0.55</h1>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv05.html">[왕초보1]</a></span>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv052.html">[왕초보2]</a></span>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv053.html">[왕초보3]</a></span><br>
-      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[초보1]</b></span>
-      <span style="font-size:18px; margin-right:8px;"><a href="omokv055.html">[초보2]</a></span>
+      <span style="font-size:18px; margin-right:8px;"><a href="omokv054.html">[초보1]</a></span>
+      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[초보2]</b></span>
       <span style="font-size:20px;"><a href="https://ipeace21.github.io/numberchoice/index.html">Go to Home</a></span><br><br>
       <button id="btn_gamestart" style="font-size:18px; margin-right:20px;" onClick="window.location.reload()">   새 게임 시작   </button><br>
       <input type="text" id="testresult" value="오목판의 교차점 부분을 클릭하세요." style="width:270px; height:25px; color:blue;"/><br>
