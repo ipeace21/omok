@@ -1980,7 +1980,7 @@ function make3white2w() {
 
 
 
-// check_2() 함수 - 흰돌 ( )( )**( )
+// check_2() 함수 - 검은돌 ( )( )**( )
 function check_2() {
 
     var dol_continue_b;

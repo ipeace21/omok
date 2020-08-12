@@ -33,6 +33,8 @@
 
     <script>
       var omokj = new Array(400);
+      var dol_black_before;
+      var dol_white_before;
       var omokdol;
       var omokxywhere;
       var dol_total_howmany;
@@ -112,13 +114,18 @@
           check_33();
 
           if (omokj[omokjxywhere] == 0 && omokdol == 1 && dol33 != 100) {
-              putstone = "omok02d.jpg";
+              if(dol_black_before != "black") {
+                 putstone = "omok02d.jpg";
+                 $(dol_black_before).attr("src", putstone);
+              }
+              putstone = "omok02dp.jpg";
               omokdol = -1;
               dol_continue = 1;
               omokj[omokjxywhere] = 1;
               $(this).attr("src", putstone);
               dol_total_howmany++;
               document.getElementById("whiteresult").value = "#" + omokjxy;
+              dol_black_before = "#" + omokjxy;
               wincheckw();
               if (winner != "") {
                 gameovercheck = 1;
@@ -248,13 +255,17 @@
               }
               blackxy = "#img_x" + blackx + "_y" + blacky;
               document.getElementById("blackresult").value = blackxy;
-
-              putstone = "omok03d.jpg";
+              if(dol_white_before != "white") {
+                 putstone = "omok03d.jpg";
+                 $(dol_white_before).attr("src", putstone);
+              }
+              putstone = "omok03dp.jpg";
               omokdol = 1;
               dol_continue = -1;
               omokj[omokjxywhereb] = -1;
               $(blackxy).attr("src", putstone);
               dol_total_howmany++;
+              dol_white_before = blackxy;
 
               omokjxywhere = omokjxywhereb;
               wincheckb();
