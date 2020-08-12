@@ -78,8 +78,8 @@
         dol_continue = 0;
         dol_white_continue = 1;
         gameovercheck = 0;
-	dol_black_before = "";
-	dol_white_before = "";
+	dol_black_before = "black";
+	dol_white_before = "white";
       }
 
       function gameoverw() {
@@ -122,7 +122,7 @@
           check_33();
 
           if (omokj[omokjxywhere] == 0 && omokdol == 1 && dol33 != 100) {
-	      if(dol_black_before <> "") {
+	      if(dol_black_before != "black") {
 		 putstone = "omok02d.jpg";
 		 $(dol_black_before).attr("src", putstone);
 	      }
@@ -276,7 +276,7 @@
               blackxy = "#img_x" + blackx + "_y" + blacky;
               document.getElementById("blackresult").value = blackxy;
 
-              if(dol_white_before <> "") {
+              if(dol_white_before != "white") {
 		 putstone = "omok03d.jpg";
 		 $(dol_white_before).attr("src", putstone);
 	      }
