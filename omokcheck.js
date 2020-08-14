@@ -1,4 +1,4 @@
-// omokcheck.js ���� Ver.0.552 (2020.08.14.)
+// omokcheck.js ���� Ver.0.553 (2020.08.14.)
 
 // �� �ڸ� : 0,  ���� �� : 1,  �� �� : -1
 
@@ -277,7 +277,6 @@ function wincheckb() {
 
 // 3*3 üũ �Լ� - ������ �ٵϵ��� ������ 3*3�� �Ǵ��� Ȯ��
 function check_33() {
-  document.getElementById("testresult").value = "check_33()";
   var dol_continue_w;
   var i, j;
   var owhere;
@@ -452,7 +451,6 @@ function check_33() {
 
 // check_4 �Լ� - ������ [0]****[ ]
 function check_4() {
-  document.getElementById("testresult").value = "check_4()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -625,7 +623,6 @@ function check_4() {
 
 // check_3 �Լ� - ������ ( )***( )
 function check_3() {
-  document.getElementById("testresult").value = "check_3()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -784,7 +781,6 @@ function check_3() {
 
 // attackcheck4 �Լ� - ���� [*]0000[ ]
 function attackcheck4() {
-    document.getElementById("testresult").value = "attackcheck4()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -934,7 +930,7 @@ function attackcheck4() {
               while(i<=5){
                 owherex = owherex - 1;
                 owherey = owherey + 1;
-                if( owherex <= 19 && owherey >= 1 && omokj[blackwhere-(18*i)] == -1 ){
+                if( owherex >= 1 && owherey <= 19 && omokj[blackwhere-(18*i)] == -1 ){
                   dol_continue_b++;
                   i++;
                 } else { break; }
@@ -979,7 +975,6 @@ function attackcheck4() {
 
 // attackcheck3 �Լ� - ���� ( )000( )
 function attackcheck3() {
-    document.getElementById("testresult").value = "attackcheck3()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1154,7 +1149,6 @@ function attackcheck3() {
 
 // attackcheck4b �Լ� - ���� 0[ ]000
 function attackcheck4b() {
-    document.getElementById("testresult").value = "attackcheck4b()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1463,7 +1457,6 @@ function whitecheck4w() {
 
 // blackcheck3b �Լ� - ���� 0( )00
 function blackcheck3b() {
-    document.getElementById("testresult").value = "blackcheck3b()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1638,7 +1631,6 @@ function blackcheck3b() {
 
 // whitecheck3w �Լ� - ���� o( )oo
 function whitecheck3w() {
-    document.getElementById("testresult").value = "whitecheck3w()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1813,7 +1805,6 @@ function whitecheck3w() {
 
 // make3white() �Լ� - ���� ( )( )**( )
 function make3white() {
-    document.getElementById("testresult").value = "make3white()";
     var dol_continue_b;
     var owhere;
     var owherex;
@@ -1914,7 +1905,6 @@ function make3white() {
 
 // make3white2w() �Լ� - ���� ( )o( )o( )
 function make3white2w() {
-    document.getElementById("testresult").value = "make3white2w()";
     var dol_continue_b;
     var owhere;
     var owherex;
@@ -1985,7 +1975,6 @@ function make3white2w() {
 
 // check_2() �Լ� - ������ ( )( )**( )
 function check_2() {
-    document.getElementById("testresult").value = "check_2()";
     var dol_continue_b;
     var owhere;
     var owherex;
