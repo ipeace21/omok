@@ -5,7 +5,6 @@
 
 // wincheckw �Լ� - ������ �ٵϵ��� 5�� �������� Ȯ��
 function wincheckw() {
-  document.getElementById("testresult").value = "wincheckw()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -140,7 +139,6 @@ function wincheckw() {
 
 // wincheckb �Լ� - ���� �ٵϵ��� 5�� �������� Ȯ��
 function wincheckb() {
-  document.getElementById("testresult").value = "wincheckb()";
   var dol_continue_b;
   var dol_continue_btext;
   var i, j;
