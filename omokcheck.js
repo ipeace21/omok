@@ -1,10 +1,11 @@
-// omokcheck.js ÆÄÀÏ Ver.0.551 (2020.08.14.)
+// omokcheck.js ï¿½ï¿½ï¿½ï¿½ Ver.0.552 (2020.08.14.)
 
-// ºó ÀÚ¸® : 0,  °ËÀº µ¹ : 1,  Èò µ¹ : -1
+// ï¿½ï¿½ ï¿½Ú¸ï¿½ : 0,  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : 1,  ï¿½ï¿½ ï¿½ï¿½ : -1
 
 
-// wincheckw ÇÔ¼ö - °ËÁ¤»ö ¹ÙµÏµ¹ÀÌ 5°³ ³õ¿´´ÂÁö È®ÀÎ
+// wincheckw ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÙµÏµï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 function wincheckw() {
+  document.getElementById("testresult").value = "wincheckw()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -14,7 +15,7 @@ function wincheckw() {
   winner = "";
   dol_continue_wtext = "";
 
-  // Win Check _ ¼¼·ÎÁÙ
+  // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     dol_continue_w = 1;
 
     owhere = omokjxywhere;
@@ -41,7 +42,7 @@ function wincheckw() {
       winner = "White";
     }
 
-    // Win Check _ °¡·ÎÁÙ
+    // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       dol_continue_w = 1;
       owhere = omokjxywhere % 19;
       if(owhere == 0 ){ owhere = 19; }
@@ -69,7 +70,7 @@ function wincheckw() {
         winner = "White";
       }
 
-      // Win Check _ ÁÂ»ó´ë°¢¼±
+      // Win Check _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
         dol_continue_w = 1;
         owherex = parseInt(omokjxywhere / 19) + 1;
         owherey = omokjxywhere % 19;
@@ -101,7 +102,7 @@ function wincheckw() {
           winner = "White";
         }
 
-        // Win Check _ ¿ì»ó´ë°¢¼±
+        // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
           dol_continue_w = 1;
           owherex = parseInt(omokjxywhere / 19) + 1;
           owherey = omokjxywhere % 19;
@@ -133,12 +134,13 @@ function wincheckw() {
             winner = "White";
           }
 
-} // wincheckw ÇÔ¼ö ³¡
+} // wincheckw ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// wincheckb ÇÔ¼ö - Èò»ö ¹ÙµÏµ¹ÀÌ 5°³ ³õ¿´´ÂÁö È®ÀÎ
+// wincheckb ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ÙµÏµï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 function wincheckb() {
+  document.getElementById("testresult").value = "wincheckb()";
   var dol_continue_b;
   var dol_continue_btext;
   var i, j;
@@ -148,7 +150,7 @@ function wincheckb() {
   winner = "";
   dol_continue_btext = "";
 
-  // Win Check _ ¼¼·ÎÁÙ
+  // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     dol_continue_b = 1;
     owhere = omokjxywhere;
     j = 1;
@@ -175,7 +177,7 @@ function wincheckb() {
     }
 
 
-    // Win Check _ °¡·ÎÁÙ
+    // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       dol_continue_b = 1;
       owhere = omokjxywhere % 19;
       if(owhere == 0 ){ owhere = 19; }
@@ -204,7 +206,7 @@ function wincheckb() {
       }
 
 
-      // Win Check _ ÁÂ»ó´ë°¢¼±
+      // Win Check _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
         dol_continue_b = 1;
         owherex = parseInt(omokjxywhere / 19) + 1;
         owherey = omokjxywhere % 19;
@@ -237,7 +239,7 @@ function wincheckb() {
         }
 
 
-        // Win Check _ ¿ì»ó´ë°¢¼±
+        // Win Check _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
           dol_continue_b = 1;
           owherex = parseInt(omokjxywhere / 19) + 1;
           owherey = omokjxywhere % 19;
@@ -270,13 +272,14 @@ function wincheckb() {
           }
 
 
-} // wincheckb ÇÔ¼ö ³¡
+} // wincheckb ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
 
-// 3*3 Ã¼Å© ÇÔ¼ö - °ËÁ¤»ö ¹ÙµÏµ¹À» ³õÀ¸¸é 3*3ÀÌ µÇ´ÂÁö È®ÀÎ
+// 3*3 Ã¼Å© ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÙµÏµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3*3ï¿½ï¿½ ï¿½Ç´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 function check_33() {
+  document.getElementById("testresult").value = "check_33()";
   var dol_continue_w;
   var i, j;
   var owhere;
@@ -444,13 +447,14 @@ function check_33() {
 
     if(j>0) { dol33 = 100; }
 
-} // 33Ã¼Å© ÇÔ¼ö ³¡
+} // 33Ã¼Å© ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
 
-// check_4 ÇÔ¼ö - °ËÀºµ¹ [0]****[ ]
+// check_4 ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [0]****[ ]
 function check_4() {
+  document.getElementById("testresult").value = "check_4()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -461,7 +465,7 @@ function check_4() {
   dol_continue_wtext = "";
 
 
-  // Check_4 _ ¼¼·ÎÁÙ
+  // Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     dol_continue_w = 1;
     dol_white_continue4 = 1;
     owhere = omokjxywhere;
@@ -497,7 +501,7 @@ function check_4() {
     }
 
 
-// Check_4 _ °¡·ÎÁÙ
+// Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   dol_continue_w = 1;
   owhere = omokjxywhere % 19;
   if(owhere == 0 ){ owhere = 19; }
@@ -534,7 +538,7 @@ function check_4() {
   }
 
 
-  // Check_4 _ ÁÂ»ó´ë°¢¼±
+  // Check_4 _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
     dol_continue_w = 1;
     owherex = parseInt(omokjxywhere / 19) + 1;
     owherey = omokjxywhere % 19;
@@ -575,7 +579,7 @@ function check_4() {
     }
 
 
-    // Check_4 _ ¿ì»ó´ë°¢¼±
+    // Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
       dol_continue_w = 1;
       owherex = parseInt(omokjxywhere / 19) + 1;
       owherey = omokjxywhere % 19;
@@ -616,13 +620,14 @@ function check_4() {
       }
 
 
-} // check_4 ÇÔ¼ö ³¡
+} // check_4 ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
 
-// check_3 ÇÔ¼ö - °ËÀºµ¹ ( )***( )
+// check_3 ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ( )***( )
 function check_3() {
+  document.getElementById("testresult").value = "check_3()";
   var dol_continue_w;
   var dol_continue_wtext;
   var i, j;
@@ -633,7 +638,7 @@ function check_3() {
   dol_continue_wtext = "";
 
 
-  // Check_3 _ ¼¼·ÎÁÙ
+  // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     dol_continue_w = 1;
     dol_white_continue = 1;
     owhere = omokjxywhere;
@@ -665,7 +670,7 @@ function check_3() {
       }
     }
 
-    // Check_3 _ °¡·ÎÁÙ
+    // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       dol_continue_w = 1;
       owhere = omokjxywhere % 19;
       if(owhere == 0 ){ owhere = 19; }
@@ -699,7 +704,7 @@ function check_3() {
       }
 
 
-      // Check_3 _ ÁÂ»ó´ë°¢¼±
+      // Check_3 _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
         dol_continue_w = 1;
         owherex = parseInt(omokjxywhere / 19) + 1;
         owherey = omokjxywhere % 19;
@@ -737,7 +742,7 @@ function check_3() {
         }
 
 
-        // Check_3 _ ¿ì»ó´ë°¢¼±
+        // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
           dol_continue_w = 1;
           owherex = parseInt(omokjxywhere / 19) + 1;
           owherey = omokjxywhere % 19;
@@ -775,13 +780,13 @@ function check_3() {
           }
 
 
-} // check_3 ÇÔ¼ö ³¡
+} // check_3 ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// attackcheck4 ÇÔ¼ö - Èòµ¹ [*]0000[ ]
+// attackcheck4 ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ [*]0000[ ]
 function attackcheck4() {
-
+    document.getElementById("testresult").value = "attackcheck4()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -796,7 +801,7 @@ function attackcheck4() {
 
       if(omokj[blackwhere] == -1 ){
 
-        // Check_4 _ ¼¼·ÎÁÙ
+        // Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 1;
         dol_black_continue4 = 1;
         owhere = blackwhere;
@@ -834,7 +839,7 @@ function attackcheck4() {
           }
         }
 
-          // Check_4 _ °¡·ÎÁÙ
+          // Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 1;
           dol_black_continue4 = 1;
           owhere = blackwhere % 19;
@@ -875,7 +880,7 @@ function attackcheck4() {
           }
 
 
-          // Check_4 _ ÁÂ»ó´ë°¢¼±
+          // Check_4 _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 1;
             dol_black_continue4 = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -921,7 +926,7 @@ function attackcheck4() {
             }
 
 
-            // Check_4 _ ¿ì»ó´ë°¢¼±
+            // Check_4 _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 1;
               dol_black_continue4 = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -970,13 +975,13 @@ function attackcheck4() {
 
     }
 
-} // attackcheck4() ÇÔ¼ö ³¡
+} // attackcheck4() ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// attackcheck3 ÇÔ¼ö - Èòµ¹ ( )000( )
+// attackcheck3 ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ ( )000( )
 function attackcheck3() {
-
+    document.getElementById("testresult").value = "attackcheck3()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -991,7 +996,7 @@ function attackcheck3() {
 
       if(omokj[blackwhere] == -1 ){
 
-        // Check_3 _ ¼¼·ÎÁÙ
+        // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 1;
         dol_black_continue3 = 1;
         owhere = blackwhere;
@@ -1024,7 +1029,7 @@ function attackcheck3() {
           }
         }
 
-          // Check_3 _ °¡·ÎÁÙ
+          // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 1;
           dol_black_continue3 = 1;
           owhere = blackwhere % 19;
@@ -1060,7 +1065,7 @@ function attackcheck3() {
           }
 
 
-          // Check_3 _ ÁÂ»ó´ë°¢¼±
+          // Check_3 _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 1;
             dol_black_continue3 = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -1101,7 +1106,7 @@ function attackcheck3() {
             }
 
 
-            // Check_3 _ ¿ì»ó´ë°¢¼±
+            // Check_3 _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 1;
               dol_black_continue3 = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -1145,13 +1150,13 @@ function attackcheck3() {
 
     }
 
-} // attackcheck3() ÇÔ¼ö ³¡
+} // attackcheck3() ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// attackcheck4b ÇÔ¼ö - Èòµ¹ 0[ ]000
+// attackcheck4b ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ 0[ ]000
 function attackcheck4b() {
-
+    document.getElementById("testresult").value = "attackcheck4b()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1165,7 +1170,7 @@ function attackcheck4b() {
 
       if(omokj[blackwhere] == 0 ){
 
-        // Check_4b _ ¼¼·ÎÁÙ
+        // Check_4b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 0;
         dol_black_continue4b = 1;
         owhere = blackwhere;
@@ -1194,7 +1199,7 @@ function attackcheck4b() {
           }
 
 
-          // Check_4b _ °¡·ÎÁÙ
+          // Check_4b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 0;
           dol_black_continue4b = 1;
           owhere = blackwhere % 19;
@@ -1225,7 +1230,7 @@ function attackcheck4b() {
             }
 
 
-          // Check_4b _ ÁÂ»ó´ë°¢¼±
+          // Check_4b _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 0;
             dol_black_continue4b = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -1261,7 +1266,7 @@ function attackcheck4b() {
               }
 
 
-            // Check_4b _ ¿ì»ó´ë°¢¼±
+            // Check_4b _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 0;
               dol_black_continue4b = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -1300,12 +1305,12 @@ function attackcheck4b() {
 
     }
 
-} // attackcheck4b() ÇÔ¼ö ³¡
+} // attackcheck4b() ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
-// whitecheck4w ÇÔ¼ö - °ËÀºµ¹ o( )ooo
+// whitecheck4w ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ o( )ooo
 function whitecheck4w() {
-
+    document.getElementById("testresult").value = "whitecheck4w()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1318,7 +1323,7 @@ function whitecheck4w() {
 
       if(omokj[blackwhere] == 0 ){
 
-        // Check_4w _ ¼¼·ÎÁÙ
+        // Check_4w _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 0;
         dol_wihte_continue4w = 1;
         owhere = blackwhere;
@@ -1347,7 +1352,7 @@ function whitecheck4w() {
           }
 
 
-          // Check_4b _ °¡·ÎÁÙ
+          // Check_4b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 0;
           dol_white_continue4w = 1;
           owhere = blackwhere % 19;
@@ -1378,7 +1383,7 @@ function whitecheck4w() {
             }
 
 
-          // Check_4b _ ÁÂ»ó´ë°¢¼±
+          // Check_4b _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 0;
             dol_white_continue4w = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -1414,7 +1419,7 @@ function whitecheck4w() {
               }
 
 
-            // Check_4b _ ¿ì»ó´ë°¢¼±
+            // Check_4b _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 0;
               dol_white_continue4w = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -1453,14 +1458,14 @@ function whitecheck4w() {
 
     }
 
-} // whitecheck4w() ÇÔ¼ö ³¡
+} // whitecheck4w() ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
 
-// blackcheck3b ÇÔ¼ö - Èòµ¹ 0( )00
+// blackcheck3b ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ 0( )00
 function blackcheck3b() {
-
+    document.getElementById("testresult").value = "blackcheck3b()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1475,7 +1480,7 @@ function blackcheck3b() {
 
       if(omokj[blackwhere] == 0 ){
 
-        // Check_3b _ ¼¼·ÎÁÙ
+        // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 0;
         dol_black_continue3b = 1;
         owhere = blackwhere;
@@ -1508,7 +1513,7 @@ function blackcheck3b() {
           }
         }
 
-          // Check_3b _ °¡·ÎÁÙ
+          // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 0;
           dol_black_continue3b = 1;
           owhere = blackwhere % 19;
@@ -1544,7 +1549,7 @@ function blackcheck3b() {
           }
 
 
-          // Check_3b _ ÁÂ»ó´ë°¢¼±
+          // Check_3b _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 0;
             dol_black_continue3b = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -1585,7 +1590,7 @@ function blackcheck3b() {
             }
 
 
-            // Check_3b _ ¿ì»ó´ë°¢¼±
+            // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 0;
               dol_black_continue3b = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -1629,13 +1634,13 @@ function blackcheck3b() {
 
     }
 
-} // blackcheck3b ÇÔ¼ö ³¡
+} // blackcheck3b ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// whitecheck3w ÇÔ¼ö - Èòµ¹ o( )oo
+// whitecheck3w ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ o( )oo
 function whitecheck3w() {
-
+    document.getElementById("testresult").value = "whitecheck3w()";
     var dol_continue_b;
     var i, j;
     var owhere;
@@ -1650,7 +1655,7 @@ function whitecheck3w() {
 
       if(omokj[blackwhere] == 0 ){
 
-        // Check_3b _ ¼¼·ÎÁÙ
+        // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         dol_continue_b = 0;
         dol_white_continue3w = 1;
         owhere = blackwhere;
@@ -1683,7 +1688,7 @@ function whitecheck3w() {
           }
         }
 
-          // Check_3b _ °¡·ÎÁÙ
+          // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           dol_continue_b = 0;
           dol_white_continue3w = 1;
           owhere = blackwhere % 19;
@@ -1719,7 +1724,7 @@ function whitecheck3w() {
           }
 
 
-          // Check_3b _ ÁÂ»ó´ë°¢¼±
+          // Check_3b _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             dol_continue_b = 0;
             dol_white_continue3w = 1;
             owherex = parseInt(blackwhere / 19) + 1;
@@ -1760,7 +1765,7 @@ function whitecheck3w() {
             }
 
 
-            // Check_3b _ ¿ì»ó´ë°¢¼±
+            // Check_3b _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               dol_continue_b = 0;
               dol_white_continue3w = 1;
               owherex = parseInt(blackwhere / 19) + 1;
@@ -1804,13 +1809,13 @@ function whitecheck3w() {
 
     }
 
-} // whitecheck3w ÇÔ¼ö ³¡
+} // whitecheck3w ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// make3white() ÇÔ¼ö - Èòµ¹ ( )( )**( )
+// make3white() ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ ( )( )**( )
 function make3white() {
-
+    document.getElementById("testresult").value = "make3white()";
     var dol_continue_b;
     var owhere;
     var owherex;
@@ -1825,7 +1830,7 @@ function make3white() {
 
         dol_white_continue2 = 1;
 
-        // make3white _ ¼¼·ÎÁÙ
+        // make3white _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         owhere = blackwhere;
         if(owhere-38 >=1 && owhere+38 <= 361
             && omokj[blackwhere-19] == 0 && omokj[blackwhere-38] == 0
@@ -1842,7 +1847,7 @@ function make3white() {
               break;
           }
 
-          // make3white _ °¡·ÎÁÙ
+          // make3white _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           owhere = blackwhere % 19;
           if(owhere == 0){ owhere = 19; }
           if(owhere-2 >= 1 && owhere+2 <= 19
@@ -1861,7 +1866,7 @@ function make3white() {
               }
 
 
-            // make3white _ ÁÂ»ó´ë°¢¼±
+            // make3white _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             owherex = parseInt(blackwhere / 19) + 1;
             owherey = blackwhere % 19;
             if(owherey == 0){ owherey = 19; }
@@ -1881,7 +1886,7 @@ function make3white() {
               }
 
 
-              // make3white _ ¿ì»ó´ë°¢¼±
+              // make3white _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               owherex = parseInt(blackwhere / 19) + 1;
               owherey = blackwhere % 19;
               if(owherey == 0){ owherey = 19; }
@@ -1905,13 +1910,13 @@ function make3white() {
 
     }
 
-} // make3white ÇÔ¼ö ³¡
+} // make3white ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
-// make3white2w() ÇÔ¼ö - Èòµ¹ ( )o( )o( )
+// make3white2w() ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ ( )o( )o( )
 function make3white2w() {
-
+    document.getElementById("testresult").value = "make3white2w()";
     var dol_continue_b;
     var owhere;
     var owherex;
@@ -1926,7 +1931,7 @@ function make3white2w() {
 
         dol_white_continue2 = 1;
 
-        // make3white2w _ ¼¼·ÎÁÙ
+        // make3white2w _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         owhere = blackwhere;
         if(owhere-38 >=1 && owhere+38 <= 361
             && omokj[blackwhere-19] == -1 && omokj[blackwhere-38] == 0
@@ -1936,7 +1941,7 @@ function make3white2w() {
             break;
           }
 
-          // make3white2w _ °¡·ÎÁÙ
+          // make3white2w _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           owhere = blackwhere % 19;
           if(owhere == 0){ owhere = 19; }
           if(owhere-2 >= 1 && owhere+2 <= 19
@@ -1947,7 +1952,7 @@ function make3white2w() {
               break;
             }
 
-            // make3white2w _ ÁÂ»ó´ë°¢¼±
+            // make3white2w _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             owherex = parseInt(blackwhere / 19) + 1;
             owherey = blackwhere % 19;
             if(owherey == 0){ owherey = 19; }
@@ -1959,7 +1964,7 @@ function make3white2w() {
                 break;
               }
 
-              // make3white2w _ ¿ì»ó´ë°¢¼±
+              // make3white2w _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               owherex = parseInt(blackwhere / 19) + 1;
               owherey = blackwhere % 19;
               if(owherey == 0){ owherey = 19; }
@@ -1975,14 +1980,14 @@ function make3white2w() {
 
     }
 
-} // make3white2w ÇÔ¼ö ³¡
+} // make3white2w ï¿½Ô¼ï¿½ ï¿½ï¿½
 
 
 
 
-// check_2() ÇÔ¼ö - °ËÀºµ¹ ( )( )**( )
+// check_2() ï¿½Ô¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ( )( )**( )
 function check_2() {
-
+    document.getElementById("testresult").value = "check_2()";
     var dol_continue_b;
     var owhere;
     var owherex;
@@ -1997,7 +2002,7 @@ function check_2() {
 
         dol_black_continue2 = 1;
 
-        // check_2 _ ¼¼·ÎÁÙ
+        // check_2 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         owhere = blackwhere;
         if(owhere-38 >=1 && owhere+38 <= 361
             && omokj[blackwhere-19] == 0 && omokj[blackwhere-38] == 0
@@ -2014,7 +2019,7 @@ function check_2() {
               break;
           }
 
-          // check_2 _ °¡·ÎÁÙ
+          // check_2 _ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
           owhere = blackwhere % 19;
           if(owhere == 0){ owhere = 19; }
           if(owhere-2 >= 1 && owhere+2 <= 19
@@ -2033,7 +2038,7 @@ function check_2() {
               }
 
 
-            // check_2 _ ÁÂ»ó´ë°¢¼±
+            // check_2 _ ï¿½Â»ï¿½ï¿½ë°¢ï¿½ï¿½
             owherex = parseInt(blackwhere / 19) + 1;
             owherey = blackwhere % 19;
             if(owherey == 0){ owherey = 19; }
@@ -2053,7 +2058,7 @@ function check_2() {
               }
 
 
-              // check_2 _ ¿ì»ó´ë°¢¼±
+              // check_2 _ ï¿½ï¿½ï¿½ï¿½ï¿½ë°¢ï¿½ï¿½
               owherex = parseInt(blackwhere / 19) + 1;
               owherey = blackwhere % 19;
               if(owherey == 0){ owherey = 19; }
@@ -2077,4 +2082,4 @@ function check_2() {
 
     }
 
-} // check_2 ÇÔ¼ö ³¡
+} // check_2 ï¿½Ô¼ï¿½ ï¿½ï¿½
