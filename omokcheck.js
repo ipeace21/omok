@@ -1302,7 +1302,6 @@ function attackcheck4b() {
 
 // whitecheck4w �Լ� - ������ o( )ooo
 function whitecheck4w() {
-    document.getElementById("testresult").value = "whitecheck4w()";
     var dol_continue_b;
     var i, j;
     var owhere;
