@@ -1,4 +1,4 @@
-// omokcheck.js ���� Ver.0.553 (2020.08.14.)
+// omokcheck.js ���� Ver.0.554 (2020.08.15.)
 
 // �� �ڸ� : 0,  ���� �� : 1,  �� �� : -1
 
@@ -1916,7 +1916,7 @@ function make3white2w() {
 
       if(omokj[blackwhere] == 0 ){
 
-        dol_white_continue2 = 1;
+        dol_white_continue2w = 1;
 
         // make3white2w _ ������
         owhere = blackwhere;
