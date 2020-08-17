@@ -4,7 +4,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>오목 게임 Ver.0.52</title>
+    <title>오목 게임 Ver.0.56</title>
 
     <style>
 
@@ -41,15 +41,32 @@
       var dol_continue;
       var dol_next_bwhere;
       var dol_next_bwhere_w4;
+      var dol_next_bwhere_w4w;
       var dol_next_bwhere_w3;
+      var dol_next_bwhere_w3w;
+      var dol_next_bwhere_w3ww;
       var dol_next_bwhere_b4;
       var dol_next_bwhere_b3;
+      var dol_next_bwhere_b3b;
+      var dol_next_bwhere_b4b;
+      var dol_next_bwhere_w2;
+      var dol_next_bwhere_w2w;
+      var dol_next_bwhere_b2;
+      var dol_white_continue2;
+      var dol_white_continue2w;
       var dol_white_continue;
+      var dol_white_continue3w;
+      var dol_white_continue3ww;
       var dol_white_continue4;
+      var dol_white_continue4w;
       var dol_black_continue4;
+      var dol_black_continue2;
       var dol_black_continue3;
+      var dol_black_continue3b;
+      var dol_black_continue4b;
       var winner="";
       var dol33;
+      var gameovercheck;
 
 
       function gamestart() {
@@ -62,6 +79,9 @@
         dol_total_howmany = 0;
         dol_continue = 0;
         dol_white_continue = 1;
+        gameovercheck = 0;
+	dol_black_before = "black";
+	dol_white_before = "white";
       }
 
       function gameoverw() {
@@ -103,11 +123,15 @@
 
           check_33();
 
+          if (dol33 == 100){
+            document.getElementById("testresult").value = "검은돌은 3*3을 놓을 수 없습니다.";
+          }
+
           if (omokj[omokjxywhere] == 0 && omokdol == 1 && dol33 != 100) {
-              if(dol_black_before != "black") {
-                 putstone = "omok02d.jpg";
-                 $(dol_black_before).attr("src", putstone);
-              }
+	            if(dol_black_before != "black") {
+		             putstone = "omok02d.jpg";
+		             $(dol_black_before).attr("src", putstone);
+	            }
               putstone = "omok02dp.jpg";
               omokdol = -1;
               dol_continue = 1;
@@ -115,35 +139,71 @@
               $(this).attr("src", putstone);
               dol_total_howmany++;
               document.getElementById("whiteresult").value = "#" + omokjxy;
-              dol_black_before = "#" + omokjxy;
+	            dol_black_before = "#" + omokjxy;
               wincheckw();
               if (winner != "") {
+                gameovercheck = 1;
                 setTimeout(function() {
                   gameoverw();
                 }, 500);
               }
 
 
+              if (gameovercheck == 0) {
+
               // black 돌 놓을 위치 찾기
 
-              check_3();
-              check_4();
-              attackcheck4();
-              attackcheck3();
+              check_2();        //12
+              make3white2w();   //11
+              make3white();     //10
+              attackcheck3ww(); //9
+              whitecheck3w();   //8
+              check_3();        //7
+              blackcheck3b();   //6
+              attackcheck3();   //5
+              whitecheck4w();   //4
+              check_4();        //3
+              attackcheck4b();  //2
+              attackcheck4();   //1
+
 
 
               if (dol_black_continue4 == 4) {
                 omokjxywhereb = dol_next_bwhere_b4;
-              }
+              } // 흰 4
+              else if (dol_black_continue4b == 4) {
+                omokjxywhereb = dol_next_bwhere_b4b;
+              } // 흰 4b
               else if (dol_white_continue4 == 4 ) {
                 omokjxywhereb = dol_next_bwhere_w4;
-              }
-              else if (dol_white_continue == 3 ) {
-                omokjxywhereb = dol_next_bwhere_w3;
-              }
+              } // 검 4
+              else if (dol_white_continue4w == 4) {
+                omokjxywhereb = dol_next_bwhere_w4w;
+              } // 검 4b
               else if (dol_black_continue3 == 3) {
                 omokjxywhereb = dol_next_bwhere_b3;
-              }
+              } // 흰 3
+              else if(dol_black_continue3b == 3) {
+                omokjxywhereb = dol_next_bwhere_b3b;
+              } // 흰 3b
+              else if (dol_white_continue == 3 ) {
+                omokjxywhereb = dol_next_bwhere_w3;
+              } // 검 3
+              else if(dol_white_continue3w == 3) {
+                omokjxywhereb = dol_next_bwhere_w3w;
+              } // 검 3b
+              else if(dol_white_continue3ww == 3) {
+                omokjxywhereb = dol_next_bwhere_w3ww;
+              } // 흰 3ww
+              else if(dol_white_continue2 == 2) {
+                omokjxywhereb = dol_next_bwhere_w2;
+              } // 흰 2
+              else if(dol_white_continue2w == 2) {
+                omokjxywhereb = dol_next_bwhere_w2w;
+              } // 흰 2w
+              else if(dol_black_continue2 == 2) {
+                omokjxywhereb = dol_next_bwhere_b2;
+              } // 검 2
               else {
                 blackcheck = 0;
                 for(var kk=0; kk<8; kk++){
@@ -226,24 +286,29 @@
               blackxy = "#img_x" + blackx + "_y" + blacky;
               document.getElementById("blackresult").value = blackxy;
               if(dol_white_before != "white") {
-                 putstone = "omok03d.jpg";
-                 $(dol_white_before).attr("src", putstone);
-              }
-              putstone = "omok03dp.jpg";
+		             putstone = "omok03d.jpg";
+		             $(dol_white_before).attr("src", putstone);
+	            }
+	            putstone = "omok03dp.jpg";
               omokdol = 1;
               dol_continue = -1;
               omokj[omokjxywhereb] = -1;
               $(blackxy).attr("src", putstone);
               dol_total_howmany++;
-              dol_white_before = blackxy;
+	            dol_white_before = blackxy;
 
               omokjxywhere = omokjxywhereb;
               wincheckb();
               if (winner != "") {
+                gameovercheck = 2;
                 setTimeout(function() {
                   gameoverb();
                 }, 500);
               }
+
+            }
+
+          document.getElementById("testresult").value = "오목판의 교차점 부분을 클릭하세요.";
 
           }
 
@@ -673,14 +738,14 @@
   <div id="explain"; style="float:left;">
   <div>
       <span style="font-size:24px;"><b>오목 게임</b></span>
-      <span style="font-size:18px;">.......Ver.0.52</span><br>
+      <span style="font-size:18px;">.......Ver.0.56</span><br>
       <hr>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv05.html">[왕초보1]</a></span>
-      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[왕초보2]</b></span>
+      <span style="font-size:18px; margin-right:8px;"><a href="omokv052.html">[왕초보2]</a></span>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv053.html">[왕초보3]</a></span><br>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv054.html">[초보1]</a></span>
       <span style="font-size:18px; margin-right:8px;"><a href="omokv055.html">[초보2]</a></span>
-      <span style="font-size:18px; margin-right:8px;"><a href="omokv056.html">[초보3]</a></span>
+      <span style="font-size:18px; margin-right:8px; color:red; background-color:yellow;"><b>[초보3]</b></span>
       <span style="font-size:15px;"><a href="https://ipeace21.github.io/numberchoice/index.html">Home</a></span><br><br>
 
       <button id="btn_gamestart" style="font-size:18px; margin-right:20px;" onClick="window.location.reload()">   새 게임 시작   </button><br>
