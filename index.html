@@ -53,13 +53,6 @@
 
 
 
-
-      function sleep(sec) {
-          let start = Date.now(), now = start;
-          while (now - start < sec * 1000) {
-              now = Date.now();
-          }
-
 	    
       function gamestart() {
         var i, j, k;
@@ -220,8 +213,6 @@
               }
 
             // Black 돌 놓기
-
-	      sleep(1);
 
               if(omokjxywhereb%19 == 0){
                 blackx = String(parseInt(omokjxywhereb / 19));
