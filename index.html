@@ -103,6 +103,12 @@
           var jbRandom;
           var blackcheck;
 
+
+		  // 500밀리초 대기하는 함수 정의
+          const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+          await delay(500); // 0.5초 대기
+
+			
           check_33();
 
           if (omokj[omokjxywhere] == 0 && omokdol == 1 && dol33 != 100) {
