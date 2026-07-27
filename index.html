@@ -104,9 +104,10 @@
           var blackcheck;
 
 
-		  // 500밀리초 대기하는 함수 정의
-          const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-          await delay(1000); // 0.5초 대기
+		  const start = Date.now();
+          while (Date.now() - start < 500) {
+          // 0.5초가 지날 때까지 아무것도 하지 않고 대기 (CPU 점유)
+          }
 
 			
           check_33();
